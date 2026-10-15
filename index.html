@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="無毒青春跑道">
-    <title>無毒青春：跑道大冒險（可愛嘉年華版 v6） - 天主教新民書院 DO NOT 隊伍</title>
+    <title>無毒青春：跑道大冒險（可愛嘉年華版 v7） - 天主教新民書院 DO NOT 隊伍</title>
     <!-- App Icon & Favicon (icon.png) -->
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
@@ -53,16 +53,16 @@
             background-position: 0 0, 14px 14px;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 5px solid #facc15;
-            box-shadow: 0 14px 32px -6px rgba(15, 23, 42, 0.26), 0 6px 0 #eab308, 0 0 0 4px rgba(255, 255, 255, 0.9) inset;
+            border: 4px solid #facc15;
+            box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.26), 0 5px 0 #eab308, 0 0 0 3px rgba(255, 255, 255, 0.9) inset;
         }
         /* Cute Glossy HUD Pill */
         .hud-pill {
             background: linear-gradient(180deg, rgba(30, 41, 59, 0.92) 0%, rgba(15, 23, 42, 0.95) 100%);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2.5px solid #fde047;
-            box-shadow: 0 4px 0 rgba(202, 138, 4, 0.65), 0 6px 14px rgba(0, 0, 0, 0.22), inset 0 2px 1px rgba(255, 255, 255, 0.25);
+            border: 2px solid #fde047;
+            box-shadow: 0 3px 0 rgba(202, 138, 4, 0.65), 0 5px 12px rgba(0, 0, 0, 0.22), inset 0 2px 1px rgba(255, 255, 255, 0.25);
         }
         /* Squishy 3D Jelly YES Button */
         .btn-3d-yes {
@@ -70,15 +70,15 @@
             appearance: none;
             background: linear-gradient(180deg, #4ade80 0%, #10b981 55%, #059669 100%);
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 0 #047857, 0 14px 22px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
+            box-shadow: 0 7px 0 #047857, 0 12px 20px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
             transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s ease;
         }
         .btn-3d-yes:active, .btn-3d-yes.active-lane {
-            transform: translateY(5px) scale(0.97);
+            transform: translateY(4px) scale(0.97);
             box-shadow: 0 3px 0 #047857, 0 6px 12px rgba(16, 185, 129, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
         .btn-3d-yes.selected-glow {
-            box-shadow: 0 8px 0 #047857, 0 0 28px 8px rgba(52, 211, 153, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
+            box-shadow: 0 7px 0 #047857, 0 0 26px 7px rgba(52, 211, 153, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
             border-color: #fef08a;
         }
         /* Squishy 3D Jelly NO Button */
@@ -87,15 +87,15 @@
             appearance: none;
             background: linear-gradient(180deg, #fb7185 0%, #ef4444 55%, #dc2626 100%);
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 0 #991b1b, 0 14px 22px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
+            box-shadow: 0 7px 0 #991b1b, 0 12px 20px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
             transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s ease;
         }
         .btn-3d-no:active, .btn-3d-no.active-lane {
-            transform: translateY(5px) scale(0.97);
+            transform: translateY(4px) scale(0.97);
             box-shadow: 0 3px 0 #991b1b, 0 6px 12px rgba(239, 68, 68, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
         .btn-3d-no.selected-glow {
-            box-shadow: 0 8px 0 #991b1b, 0 0 28px 8px rgba(251, 113, 133, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
+            box-shadow: 0 7px 0 #991b1b, 0 0 26px 7px rgba(251, 113, 133, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
             border-color: #fef08a;
         }
         /* Cute Jelly Action Button */
@@ -133,7 +133,7 @@
         }
         @keyframes floatMascot {
             0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-6px) rotate(2deg); }
+            50% { transform: translateY(-5px) rotate(2deg); }
         }
         .animate-float-mascot {
             animation: floatMascot 2.2s ease-in-out infinite;
@@ -176,6 +176,7 @@
             -webkit-appearance: none;
             appearance: none;
             height: 8px;
+            min-width: 0;
             background: #cbd5e1;
             border-radius: 999px;
             outline: none;
@@ -192,10 +193,10 @@
             cursor: pointer;
         }
         .safe-top {
-            padding-top: max(env(safe-area-inset-top, 0px), 8px);
+            padding-top: max(env(safe-area-inset-top, 0px), 6px);
         }
         .safe-bottom {
-            padding-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+            padding-bottom: max(env(safe-area-inset-bottom, 0px), 8px);
         }
     </style>
 </head>
@@ -227,83 +228,92 @@
     </div>
 
     <!-- Cute Mascot Reaction Toast (Enlarged Mobile Text + Extended 4.6s Display) -->
-    <div id="mascot-reaction-container" class="absolute inset-x-0 bottom-32 sm:bottom-36 md:bottom-44 z-30 pointer-events-none flex flex-col items-center justify-center hidden px-3">
-        <div id="mascot-reaction-card" class="px-4 py-3 sm:px-6 sm:py-4 rounded-[2rem] border-4 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md">
+    <div id="mascot-reaction-container" class="absolute inset-x-0 bottom-36 sm:bottom-40 md:bottom-44 z-30 pointer-events-none flex flex-col items-center justify-center hidden px-2.5">
+        <div id="mascot-reaction-card" class="px-4 py-3 sm:px-6 sm:py-4 rounded-[1.8rem] border-4 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md">
             <img id="mascot-reaction-img" src="mascot_yes.png" alt="吉祥物" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0 drop-shadow-md" />
             <div class="flex-1 min-w-0 text-left">
-                <div id="mascot-reaction-title" class="text-base sm:text-xl font-black flex items-center gap-1.5 mb-0.5"></div>
-                <div id="mascot-reaction-desc" class="text-sm sm:text-lg font-black text-slate-800 leading-snug break-words"></div>
+                <div id="mascot-reaction-title" class="text-lg sm:text-xl font-black flex items-center gap-1.5 mb-0.5"></div>
+                <div id="mascot-reaction-desc" class="text-base sm:text-lg font-black text-slate-800 leading-snug break-words"></div>
             </div>
         </div>
     </div>
 
-    <!-- HUD Layer (Enlarged Mobile Font + Zero Text Clipping on MacBook & iPhone Safari) -->
-    <div id="hud" class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-2 sm:p-4 safe-top safe-bottom hidden">
+    <!-- HUD Layer (Guaranteed Zero Overflow on Mobile + Giant Readable Question & Choice Fonts) -->
+    <div id="hud" class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between px-2 py-1.5 sm:p-4 safe-top safe-bottom hidden">
         
-        <!-- TOP SECTION: Status Bar + Cute Cloud Question Stage -->
+        <!-- TOP SECTION: Compact Non-Overflow Status Bar + Full-Width Giant Question Stage -->
         <div class="w-full max-w-5xl mx-auto flex flex-col gap-1.5 sm:gap-2">
             
-            <!-- Row 1: Controls, BGM Volume Control, 5-Star Progress & Score -->
+            <!-- Row 1: Controls, 5-Star Progress & Always-Visible Top-Right Score -->
             <div class="w-full flex justify-between items-center gap-1 sm:gap-2">
-                <!-- Left Utility Buttons -->
+                <!-- Left Utility Buttons (Compact on Mobile so Score NEVER goes off-screen!) -->
                 <div class="flex items-center gap-1 sm:gap-1.5 pointer-events-auto shrink-0">
-                    <button id="btn-pause" type="button" class="btn-bounce bg-slate-900/90 hover:bg-slate-800 text-amber-300 font-black rounded-2xl shadow-lg border-2 border-amber-400 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 text-sm sm:text-base" title="暫停 / 音樂設定">
+                    <button id="btn-pause" type="button" class="btn-bounce bg-slate-900/90 hover:bg-slate-800 text-amber-300 font-black rounded-xl sm:rounded-2xl shadow-lg border-2 border-amber-400 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-base" title="暫停 / 音樂設定">
                         <i class="fa-solid fa-pause"></i>
                     </button>
-                    <button id="btn-voice-toggle" type="button" class="btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2.5 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="開關題目語音">
-                        <i id="icon-voice" class="fa-solid fa-volume-high text-sm"></i>
+                    <button id="btn-voice-toggle" type="button" class="btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-xl sm:rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="開關題目語音">
+                        <i id="icon-voice" class="fa-solid fa-volume-high text-xs sm:text-sm"></i>
                         <span id="text-voice" class="hidden md:inline">讀題：開</span>
                     </button>
 
-                    <!-- Independent BGM Volume Control Pill -->
-                    <div class="hud-pill px-2 sm:px-3 h-9 sm:h-10 rounded-2xl flex items-center gap-1.5 text-white">
+                    <!-- BGM Control Pill (Slider hidden on tiny phone width to save space, full slider on sm+ & Pause menu) -->
+                    <div class="hud-pill px-2 sm:px-3 h-8 sm:h-10 rounded-xl sm:rounded-2xl flex items-center gap-1.5 text-white">
                         <button id="btn-bgm-mute" type="button" class="text-amber-300 hover:text-amber-200 flex items-center justify-center w-5 h-5" title="靜音/開啟背景音樂">
                             <i id="icon-bgm" class="fa-solid fa-music text-xs sm:text-sm"></i>
                         </button>
-                        <input id="slider-bgm-hud" type="range" min="0" max="100" value="35" class="bgm-slider w-12 sm:w-20" title="獨立調整背景音樂音量" />
+                        <input id="slider-bgm-hud" type="range" min="0" max="100" value="35" class="bgm-slider hidden sm:block sm:w-20" title="獨立調整背景音樂音量" />
                     </div>
 
-                    <button id="btn-quit" type="button" class="btn-bounce bg-rose-500 hover:bg-rose-600 text-white font-black px-2.5 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="提早結算">
-                        <i class="fa-solid fa-flag-checkered"></i>
+                    <button id="btn-quit" type="button" class="btn-bounce bg-rose-500 hover:bg-rose-600 text-white font-black px-2 sm:px-3 rounded-xl sm:rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="提早結算">
+                        <i class="fa-solid fa-flag-checkered text-xs sm:text-sm"></i>
                         <span class="hidden lg:inline">結算</span>
                     </button>
                 </div>
 
-                <!-- Center: Team Logo + 5-Question Star Progress Pill -->
-                <div class="hud-pill px-2.5 py-1.5 sm:px-4 sm:py-1.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2 text-white shadow-lg shrink-0">
-                    <img id="hud-logo-img" src="team_logo.png" alt="DN" class="w-5 h-5 sm:w-7 sm:h-7 rounded-full object-contain bg-slate-950 p-0.5 border border-amber-300 hidden sm:block" />
+                <!-- Center: 5-Question Star Progress Pill -->
+                <div class="hud-pill px-2 py-1 sm:px-4 sm:py-1.5 rounded-full flex items-center justify-center gap-1 sm:gap-2 text-white shadow-lg shrink-0">
+                    <img id="hud-logo-img" src="team_logo.png" alt="DN" class="w-5 h-5 sm:w-7 sm:h-7 rounded-full object-contain bg-slate-950 p-0.5 border border-amber-300 hidden md:block" />
                     <span class="text-xs font-black text-amber-300 whitespace-nowrap hidden sm:inline">闖關星星</span>
-                    <div id="hud-stars" class="flex items-center gap-1 sm:gap-1.5 text-sm sm:text-lg leading-none"></div>
+                    <div id="hud-stars" class="flex items-center gap-0.5 sm:gap-1.5 text-xs sm:text-lg leading-none"></div>
                 </div>
 
-                <!-- Right: Cute Score Pill -->
-                <div class="hud-pill px-3 sm:px-4 py-1.5 sm:py-1.5 rounded-2xl flex items-center gap-1.5 text-white shrink-0">
-                    <span class="text-base sm:text-lg leading-none">⭐</span>
+                <!-- Right: Prominent Top-Right Score Pill (Always Inside Screen!) -->
+                <div class="hud-pill px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-xl sm:rounded-2xl flex items-center gap-1 sm:gap-1.5 text-white shrink-0">
+                    <span class="text-sm sm:text-lg leading-none">⭐</span>
                     <span class="text-xs font-black text-amber-200 hidden sm:inline">分數</span>
-                    <div id="hud-score" class="text-base sm:text-xl font-black text-amber-300 tabular-nums leading-none">0</div>
+                    <div id="hud-score" class="text-base sm:text-2xl font-black text-amber-300 tabular-nums leading-none">0</div>
                 </div>
             </div>
 
-            <!-- Row 2: Cute Carnival Question Card (Safari-Safe Measurement & Enlarged Mobile Font) -->
+            <!-- Row 2: Cute Carnival Question Card (2-Row Full-Width Layout on Mobile for GIANT Question Text!) -->
             <div id="question-banner-wrapper" class="w-full max-w-2xl mx-auto pointer-events-auto">
-                <div id="question-card" class="carnival-card rounded-[1.6rem] sm:rounded-[2rem] px-3 py-2 sm:px-5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 cursor-pointer active:scale-[0.99] transition-transform" title="點擊重聽問題語音">
-                    <!-- Mascot Host Avatar -->
-                    <div class="relative shrink-0 flex items-center justify-center">
-                        <img id="hud-mascot-host" src="mascot_front.png" alt="DO NOT 吉祥物" class="w-12 h-12 sm:w-16 sm:h-16 object-contain animate-float-mascot drop-shadow" />
-                        <span id="question-badge" class="absolute -top-1.5 -left-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-full border-2 border-white shadow whitespace-nowrap leading-none">
-                            🎈 第 1/5 關
-                        </span>
+                <div id="question-card" class="carnival-card rounded-[1.5rem] sm:rounded-[2rem] px-3 py-2 sm:px-5 sm:py-3 flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4 cursor-pointer active:scale-[0.99] transition-transform" title="點擊重聽問題語音">
+                    
+                    <!-- Mobile Top Header Row (Mascot + Level Badge + Hint + Replay Button) / Desktop Left Mascot -->
+                    <div class="w-full sm:w-auto flex items-center justify-between sm:justify-center shrink-0">
+                        <div class="flex items-center gap-2">
+                            <img id="hud-mascot-host" src="mascot_front.png" alt="DO NOT 吉祥物" class="w-10 h-10 sm:w-16 sm:h-16 object-contain animate-float-mascot drop-shadow shrink-0" />
+                            <span id="question-badge" class=" sm:absolute sm:-top-1.5 sm:-left-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-xs font-black px-2.5 py-0.5 rounded-full border-2 border-white shadow whitespace-nowrap leading-tight">
+                                🎈 第 1/5 關
+                            </span>
+                        </div>
+
+                        <!-- Mobile Replay Voice Button (Right side of top bar on phone, hidden on sm+) -->
+                        <button id="btn-replay-voice-mobile" type="button" class="sm:hidden btn-bounce px-2.5 py-1 rounded-xl bg-gradient-to-b from-sky-100 to-sky-200 border-2 border-sky-400 text-sky-800 flex items-center gap-1 shadow-sm" title="重聽題目語音">
+                            <i class="fa-solid fa-volume-high text-xs text-sky-600"></i>
+                            <span class="text-xs font-black leading-none">重聽</span>
+                        </button>
                     </div>
 
-                    <!-- Center Giant Question Text & Emoji (No Safari Flex-Clip Bug!) -->
-                    <div id="question-center-box" class="flex-1 text-center min-w-0 px-1 flex flex-col items-center justify-center">
+                    <!-- Center Giant Question Text & Emoji (Spans 100% Full Card Width on Mobile!) -->
+                    <div id="question-center-box" class="w-full sm:flex-1 text-center min-w-0 px-1 flex flex-col items-center justify-center">
                         <div id="question-title-row" class="inline-flex items-center justify-center gap-1.5 sm:gap-2.5 whitespace-nowrap">
-                            <span id="question-emoji" class="text-2xl sm:text-4xl leading-none drop-shadow-sm shrink-0">🌿</span>
-                            <h2 id="question-text" class="font-black text-slate-900 tracking-tight m-0 leading-tight cute-title-shadow" style="font-size: 26px;">
+                            <span id="question-emoji" class="text-3xl sm:text-4xl leading-none drop-shadow-sm shrink-0">🌿</span>
+                            <h2 id="question-text" class="font-black text-slate-900 tracking-tight m-0 leading-tight cute-title-shadow" style="font-size: 32px;">
                                 食大麻朱古力？
                             </h2>
                         </div>
-                        <div id="thinking-hint" class="text-xs sm:text-sm font-black text-amber-800 mt-1 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/95 px-3 py-0.5 rounded-full border border-amber-300 shadow-sm">
+                        <div id="thinking-hint" class="text-xs sm:text-sm font-black text-amber-900 mt-1 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/95 px-3 py-0.5 rounded-full border border-amber-300 shadow-sm">
                             <span>👇 拍下面</span>
                             <span class="text-emerald-600 font-black">【⭕ 要！】</span>
                             <span>定</span>
@@ -311,49 +321,65 @@
                         </div>
                     </div>
 
-                    <!-- Replay Audio Button -->
-                    <button id="btn-replay-voice" type="button" class="btn-bounce shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-b from-sky-100 to-sky-200 hover:from-sky-200 hover:to-sky-300 border-2 border-sky-400 text-sky-800 flex flex-col items-center justify-center shadow-sm" title="重聽題目語音">
-                        <i class="fa-solid fa-volume-high text-base sm:text-lg leading-none text-sky-600"></i>
-                        <span class="text-[10px] sm:text-[11px] font-black leading-none mt-0.5">重聽</span>
+                    <!-- Desktop/Tablet Replay Audio Button (Hidden on phone since phone uses top-right button) -->
+                    <button id="btn-replay-voice" type="button" class="hidden sm:flex btn-bounce shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-b from-sky-100 to-sky-200 hover:from-sky-200 hover:to-sky-300 border-2 border-sky-400 text-sky-800 flex-col items-center justify-center shadow-sm" title="重聽題目語音">
+                        <i class="fa-solid fa-volume-high text-lg leading-none text-sky-600"></i>
+                        <span class="text-[11px] font-black leading-none mt-0.5">重聽</span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- BOTTOM SECTION: Giant Cute Jelly 「⭕ 要！」 vs 「❌ 不要！」 Arcade Pads (Enlarged on Mobile) -->
-        <div class="w-full max-w-4xl mx-auto pointer-events-auto px-1 sm:px-4">
-            <div class="grid grid-cols-2 gap-2.5 sm:gap-6 items-stretch">
+        <!-- BOTTOM SECTION: Giant Cute Jelly 「⭕ 要！」 vs 「❌ 不要！」 Arcade Pads (Full-Width Giant Text on Mobile!) -->
+        <div class="w-full max-w-4xl mx-auto pointer-events-auto px-0.5 sm:px-4">
+            <div class="grid grid-cols-2 gap-2 sm:gap-6 items-stretch">
                 
                 <!-- LEFT BUTTON: ⭕ 要！ (YES) -->
-                <button id="btn-left" type="button" class="btn-3d-yes rounded-[1.6rem] sm:rounded-[2rem] px-3 py-2.5 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
-                    <img id="btn-yes-mascot" src="mascot_yes.png" alt="要" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
-                    <div class="text-left flex flex-col justify-center min-w-0">
-                        <div class="text-[11px] sm:text-xs font-black text-emerald-950 bg-emerald-200/95 px-2 py-0.5 rounded-full w-fit flex items-center gap-1 whitespace-nowrap leading-none mb-1">
+                <button id="btn-left" type="button" class="btn-3d-yes rounded-[1.5rem] sm:rounded-[2rem] px-2.5 py-2 sm:p-4 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 text-white relative overflow-hidden group">
+                    <!-- Top Row on Mobile / Left Mascot on Desktop -->
+                    <div class="flex items-center justify-center gap-1.5 sm:shrink-0">
+                        <img id="btn-yes-mascot" src="mascot_yes.png" alt="要" class="w-11 h-11 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
+                        <div class="sm:hidden text-xs font-black text-emerald-950 bg-emerald-200/95 px-2 py-0.5 rounded-full flex items-center gap-1 whitespace-nowrap leading-none shadow-sm">
                             <i class="fa-solid fa-arrow-left"></i> 左邊跑道
                         </div>
-                        <div class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.28)] whitespace-nowrap leading-none">
+                    </div>
+                    <!-- Giant Choice Text Block -->
+                    <div class="text-center sm:text-left flex flex-col justify-center items-center sm:items-start min-w-0 w-full sm:w-auto">
+                        <div class="hidden sm:flex text-xs font-black text-emerald-950 bg-emerald-200/95 px-2.5 py-0.5 rounded-full w-fit items-center gap-1 whitespace-nowrap leading-none mb-1">
+                            <i class="fa-solid fa-arrow-left"></i> 左邊跑道
+                        </div>
+                        <div class="text-[32px] sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)] whitespace-nowrap leading-none my-0.5">
                             ⭕ 要！
                         </div>
-                        <div class="text-[11px] sm:text-xs font-black text-emerald-50 mt-1 whitespace-nowrap">
+                        <div class="text-xs sm:text-sm font-black text-emerald-50 mt-0.5 whitespace-nowrap drop-shadow-sm">
                             ✨ 正確好行為 👍
                         </div>
                     </div>
                 </button>
 
                 <!-- RIGHT BUTTON: ❌ 不要！ (DO NOT) -->
-                <button id="btn-right" type="button" class="btn-3d-no rounded-[1.6rem] sm:rounded-[2rem] px-3 py-2.5 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
-                    <div class="text-right flex flex-col justify-center items-end min-w-0">
-                        <div class="text-[11px] sm:text-xs font-black text-rose-950 bg-rose-200/95 px-2 py-0.5 rounded-full w-fit flex items-center justify-end gap-1 whitespace-nowrap leading-none mb-1">
+                <button id="btn-right" type="button" class="btn-3d-no rounded-[1.5rem] sm:rounded-[2rem] px-2.5 py-2 sm:p-4 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 text-white relative overflow-hidden group">
+                    <!-- Top Row on Mobile (Mascot + Badge) -->
+                    <div class="flex sm:hidden items-center justify-center gap-1.5">
+                        <div class="text-xs font-black text-rose-950 bg-rose-200/95 px-2 py-0.5 rounded-full flex items-center gap-1 whitespace-nowrap leading-none shadow-sm">
                             右邊跑道 <i class="fa-solid fa-arrow-right"></i>
                         </div>
-                        <div class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.28)] whitespace-nowrap leading-none">
+                        <img id="btn-no-mascot-mobile" src="mascot_no.png" alt="不要" class="w-11 h-11 object-contain drop-shadow-md shrink-0" />
+                    </div>
+                    <!-- Giant Choice Text Block -->
+                    <div class="text-center sm:text-right flex flex-col justify-center items-center sm:items-end min-w-0 w-full sm:w-auto">
+                        <div class="hidden sm:flex text-xs font-black text-rose-950 bg-rose-200/95 px-2.5 py-0.5 rounded-full w-fit items-center justify-end gap-1 whitespace-nowrap leading-none mb-1">
+                            右邊跑道 <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="text-[32px] sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)] whitespace-nowrap leading-none my-0.5">
                             ❌ 不要！
                         </div>
-                        <div class="text-[11px] sm:text-xs font-black text-amber-200 mt-1 whitespace-nowrap">
+                        <div class="text-xs sm:text-sm font-black text-amber-200 mt-0.5 whitespace-nowrap drop-shadow-sm">
                             🚫 遠離毒品 DO NOT
                         </div>
                     </div>
-                    <img id="btn-no-mascot" src="mascot_no.png" alt="不要" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
+                    <!-- Right Mascot on Desktop/Tablet -->
+                    <img id="btn-no-mascot" src="mascot_no.png" alt="不要" class="hidden sm:block sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
                 </button>
 
             </div>
@@ -366,11 +392,11 @@
             
             <!-- Team Crest & Mascot Hero Banner -->
             <div class="flex items-center justify-center gap-2.5 sm:gap-4 mb-2">
-                <div class="w-15 h-15 sm:w-20 sm:h-20 w-16 h-16 rounded-full bg-slate-950 border-4 border-amber-400 p-1 shadow-lg flex items-center justify-center shrink-0">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950 border-4 border-amber-400 p-1 shadow-lg flex items-center justify-center shrink-0">
                     <img id="start-logo-img" src="team_logo.png" alt="DO NOT 隊徽" class="w-full h-full object-contain rounded-full" />
                 </div>
                 <div class="text-left min-w-0">
-                    <div class="inline-block bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 text-xs sm:text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-500 shadow-sm mb-0.5 whitespace-nowrap">
+                    <div class="inline-block bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-500 shadow-sm mb-0.5 whitespace-nowrap">
                         🎪 西九龍禁毒嘉年華 ‧ 攤位遊戲
                     </div>
                     <div class="text-xs sm:text-sm font-black text-sky-900 truncate">第五屆禁毒領袖學院</div>
@@ -604,7 +630,7 @@
         </div>
     </div>
 
-    <!-- External PNG File Paths for GitHub Hosting (Lightweight & Fast!) -->
+    <!-- External PNG File Paths for GitHub Hosting -->
     <script>
         const MASCOT_ASSETS = {
             back: "mascot_back.png",
@@ -1123,8 +1149,6 @@
 
         /**
          * LEFT-ANCHORED PIXEL-SCANNING BOUNDING-BOX ENGINE (100% IMMUNE TO SAFARI / iOS CANVAS SHIFT BUGS)
-         * Draws text left-aligned onto a wide offscreen canvas, scans exact painted pixels (minX..maxX, minY..maxY),
-         * and scales/centers the exact visual pixel bounding box inside (boxX, boxY, boxW, boxH).
          */
         function drawPixelPerfectTextInBox(targetCtx, text, boxX, boxY, boxW, boxH, options = {}) {
             const offW = 2200;
@@ -1160,7 +1184,6 @@
             offCtx.fillStyle = options.fillStyle || '#ffffff';
             offCtx.fillText(text, startX, centerY);
 
-            // Scan actual rendered pixels to find true visual bounding box
             const imgData = offCtx.getImageData(0, 0, offW, offH).data;
             let minX = offW, maxX = 0, minY = offH, maxY = 0;
             let found = false;
@@ -1213,9 +1236,9 @@
         }
 
         /**
-         * SAFARI-SAFE HTML QUESTION BANNER AUTO-FIT
-         * Measures the exact sum of Emoji width + Question Text width against #question-center-box width.
-         * Enlarged mobile font size and zero left/right flex clipping on MacBook & iPhone Safari!
+         * SAFARI-SAFE HTML QUESTION BANNER AUTO-FIT (GIANT MOBILE FONT!)
+         * Because #question-center-box now spans 100% of the card width on mobile,
+         * questions render at a huge 32px ~ 34px on phones and 36px ~ 38px on desktop!
          */
         function fitQuestionBannerText() {
             const centerBox = document.getElementById('question-center-box');
@@ -1224,8 +1247,8 @@
             if (!centerBox || !emojiEl || !textEl) return;
 
             const isMobile = window.innerWidth < 640;
-            const maxFont = isMobile ? 27 : (window.innerWidth < 1024 ? 32 : 36);
-            const minFont = isMobile ? 17 : 20;
+            const maxFont = isMobile ? 33 : (window.innerWidth < 1024 ? 36 : 38);
+            const minFont = isMobile ? 22 : 24;
 
             let fontSize = maxFont;
             textEl.style.fontSize = fontSize + 'px';
@@ -1233,7 +1256,7 @@
             const boxW = centerBox.getBoundingClientRect().width;
             if (boxW <= 20) return;
 
-            const safeAvailableW = boxW - 10;
+            const safeAvailableW = boxW - 8;
             const gapPx = isMobile ? 8 : 12;
 
             while (fontSize > minFont) {
@@ -1325,12 +1348,13 @@
             if (!camera) return;
             const aspect = window.innerWidth / window.innerHeight;
             camera.aspect = aspect;
+            // Closer FOV on mobile portrait so 3D Gates and Question Arches appear larger!
             if (aspect < 0.65) {
-                camera.fov = 72;
+                camera.fov = 66;
             } else if (aspect < 0.9) {
-                camera.fov = 64;
+                camera.fov = 60;
             } else {
-                camera.fov = 56;
+                camera.fov = 55;
             }
             camera.updateProjectionMatrix();
         }
@@ -1447,8 +1471,7 @@
         }
 
         /**
-         * Build Gate Textures & 3D Floating Item Labels
-         * Uses Vector Icons + Left-Anchored Pixel-Scanning Bounding Box so "唔好試 DO NOT" NEVER shifts right on iPhone Safari!
+         * Build Gate Textures & 3D Floating Item Labels (Enlarged Gate Choice Fonts for Mobile Visibility!)
          */
         function buildFixedGateTextures() {
             // 1. LEFT GATE: ⭕ 要！
@@ -1473,28 +1496,29 @@
             ctxY.strokeRect(36, 36, 728, 608);
 
             if (loadedImages.yes) {
-                ctxY.drawImage(loadedImages.yes, 235, 36, 330, 345);
+                ctxY.drawImage(loadedImages.yes, 245, 28, 310, 325);
             }
 
-            drawPixelPerfectTextInBox(ctxY, '⭕ 要！', 80, 395, 640, 125, {
-                font: `900 126px ${CUTE_CANVAS_FONT}`,
+            // Enlarged Main Gate Choice Text
+            drawPixelPerfectTextInBox(ctxY, '⭕ 要！', 55, 365, 690, 150, {
+                font: `900 148px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#ffffff',
                 strokeStyle: '#064e3b',
-                lineWidth: 16,
-                shadowColor: 'rgba(0,0,0,0.35)',
+                lineWidth: 18,
+                shadowColor: 'rgba(0,0,0,0.38)',
                 shadowBlur: 10
             });
 
-            // Subtitle Pill Badge at bottom of Left Gate (x: 100..700, y: 540..620)
-            ctxY.fillStyle = 'rgba(6, 78, 59, 0.62)';
-            drawRoundedBox(ctxY, 100, 540, 600, 78, 39);
+            // Enlarged Subtitle Pill Badge at bottom of Left Gate
+            ctxY.fillStyle = 'rgba(6, 78, 59, 0.68)';
+            drawRoundedBox(ctxY, 80, 532, 640, 88, 44);
             ctxY.fill();
-            ctxY.lineWidth = 4;
-            ctxY.strokeStyle = 'rgba(254, 240, 138, 0.7)';
+            ctxY.lineWidth = 5;
+            ctxY.strokeStyle = 'rgba(254, 240, 138, 0.8)';
             ctxY.stroke();
 
-            drawPixelPerfectTextInBox(ctxY, '★ 正確好行為', 145, 550, 510, 58, {
-                font: `900 50px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctxY, '★ 正確好行為', 120, 542, 560, 68, {
+                font: `900 58px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#fef08a'
             });
 
@@ -1523,29 +1547,29 @@
             ctxN.strokeRect(36, 36, 728, 608);
 
             if (loadedImages.no) {
-                ctxN.drawImage(loadedImages.no, 235, 36, 330, 345);
+                ctxN.drawImage(loadedImages.no, 245, 28, 310, 325);
             }
 
-            drawPixelPerfectTextInBox(ctxN, '❌ 不要！', 80, 395, 640, 125, {
-                font: `900 122px ${CUTE_CANVAS_FONT}`,
+            // Enlarged Main Gate Choice Text
+            drawPixelPerfectTextInBox(ctxN, '❌ 不要！', 55, 365, 690, 150, {
+                font: `900 144px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#ffffff',
                 strokeStyle: '#7f1d1d',
-                lineWidth: 16,
-                shadowColor: 'rgba(0,0,0,0.35)',
+                lineWidth: 18,
+                shadowColor: 'rgba(0,0,0,0.38)',
                 shadowBlur: 10
             });
 
-            // Subtitle Pill Badge at bottom of Right Gate (x: 100..700, y: 540..620)
-            ctxN.fillStyle = 'rgba(127, 29, 29, 0.65)';
-            drawRoundedBox(ctxN, 100, 540, 600, 78, 39);
+            // Enlarged Subtitle Pill Badge at bottom of Right Gate
+            ctxN.fillStyle = 'rgba(127, 29, 29, 0.7)';
+            drawRoundedBox(ctxN, 80, 532, 640, 88, 44);
             ctxN.fill();
-            ctxN.lineWidth = 4;
-            ctxN.strokeStyle = 'rgba(254, 240, 138, 0.7)';
+            ctxN.lineWidth = 5;
+            ctxN.strokeStyle = 'rgba(254, 240, 138, 0.8)';
             ctxN.stroke();
 
-            // Uses pure non-emoji vector text '✕ 唔好試 DO NOT' + Left-Aligned Pixel Scanner -> 0% right shift on iPhone Safari!
-            drawPixelPerfectTextInBox(ctxN, '✕ 唔好試 DO NOT', 150, 550, 500, 58, {
-                font: `900 48px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctxN, '✕ 唔好試 DO NOT', 125, 542, 550, 68, {
+                font: `900 56px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#fef08a'
             });
 
@@ -1564,8 +1588,8 @@
             ctxS.strokeStyle = '#fef08a';
             ctxS.stroke();
 
-            drawPixelPerfectTextInBox(ctxS, '★ 星星 +300', 64, 32, 392, 86, {
-                font: `900 66px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctxS, '★ 星星 +300', 56, 28, 408, 94, {
+                font: `900 72px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#ffffff',
                 strokeStyle: '#065f46',
                 lineWidth: 10
@@ -1585,8 +1609,8 @@
             ctxD.strokeStyle = '#ffffff';
             ctxD.stroke();
 
-            drawPixelPerfectTextInBox(ctxD, '✕ 毒品 -300', 64, 32, 392, 86, {
-                font: `900 66px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctxD, '✕ 毒品 -300', 56, 28, 408, 94, {
+                font: `900 72px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#fef08a',
                 strokeStyle: '#881337',
                 lineWidth: 10
@@ -1683,39 +1707,39 @@
             trackSegments.push(group);
         }
 
-        // Pixel-Perfect 3D Question Arch Banner (Separates Emoji & Text to Prevent Safari ZWJ/Emoji Clipping)
+        // Larger, Bolder 3D Question Arch Banner for Mobile Readability
         function create3DQuestionArchBanner(qData, questionNumber) {
             const canvas = document.createElement('canvas');
             canvas.width = 1400;
-            canvas.height = 300;
+            canvas.height = 340;
             const ctx = canvas.getContext('2d');
 
             ctx.fillStyle = '#ffffff';
-            drawRoundedBox(ctx, 16, 16, 1368, 268, 55);
+            drawRoundedBox(ctx, 16, 16, 1368, 308, 60);
             ctx.fill();
 
             ctx.strokeStyle = '#facc15';
-            ctx.lineWidth = 22;
+            ctx.lineWidth = 24;
             ctx.stroke();
 
             ctx.strokeStyle = '#38bdf8';
             ctx.lineWidth = 8;
-            drawRoundedBox(ctx, 36, 36, 1328, 228, 40);
+            drawRoundedBox(ctx, 36, 36, 1328, 268, 44);
             ctx.stroke();
 
             const fullText = `第 ${questionNumber} 關：${qData.prompt}`;
-            drawPixelPerfectTextInBox(ctx, fullText, 95, 52, 1210, 196, {
-                font: `900 84px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctx, fullText, 70, 48, 1260, 244, {
+                font: `900 108px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#0f172a'
             });
 
             const tex = new THREE.CanvasTexture(canvas);
             tex.needsUpdate = true;
 
-            const geo = new THREE.PlaneGeometry(9.6, 2.06);
+            const geo = new THREE.PlaneGeometry(10.6, 2.55);
             const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, side: THREE.FrontSide });
             const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.set(0, 4.95, 0);
+            mesh.position.set(0, 5.1, 0);
             return mesh;
         }
 
@@ -1729,8 +1753,8 @@
             spawnedGateCount++;
             const questionNumber = spawnedGateCount;
 
-            const gateWidth = 4.15;
-            const gateHeight = 3.7;
+            const gateWidth = 4.2;
+            const gateHeight = 3.8;
             const gateGeo = new THREE.BoxGeometry(gateWidth, gateHeight, 0.28);
 
             const leftMat = new THREE.MeshBasicMaterial({ map: leftYesGateTexture });
@@ -1804,8 +1828,8 @@
             ctx.lineWidth = 16;
             ctx.stroke();
 
-            drawPixelPerfectTextInBox(ctx, "🏁 終點過關！ 🏁", 80, 44, 864, 168, {
-                font: `900 82px ${CUTE_CANVAS_FONT}`,
+            drawPixelPerfectTextInBox(ctx, "🏁 終點過關！ 🏁", 70, 40, 884, 176, {
+                font: `900 88px ${CUTE_CANVAS_FONT}`,
                 fillStyle: '#0f172a'
             });
 
@@ -1841,7 +1865,7 @@
                 starGroup.add(starMesh);
 
                 if (starLabelTexture) {
-                    const labelGeo = new THREE.PlaneGeometry(2.5, 0.72);
+                    const labelGeo = new THREE.PlaneGeometry(2.6, 0.75);
                     const labelMat = new THREE.MeshBasicMaterial({ map: starLabelTexture, transparent: true });
                     const labelMesh = new THREE.Mesh(labelGeo, labelMat);
                     labelMesh.position.y = 2.15;
@@ -1867,7 +1891,7 @@
                 drugGroup.add(drugMesh);
 
                 if (drugLabelTexture) {
-                    const dLabelGeo = new THREE.PlaneGeometry(2.5, 0.72);
+                    const dLabelGeo = new THREE.PlaneGeometry(2.6, 0.75);
                     const dLabelMat = new THREE.MeshBasicMaterial({ map: drugLabelTexture, transparent: true });
                     const dLabelMesh = new THREE.Mesh(dLabelGeo, dLabelMat);
                     dLabelMesh.position.y = 2.15;
@@ -1897,11 +1921,10 @@
             if (emojiEl) emojiEl.innerText = qData.emoji;
             if (textEl) textEl.innerText = qData.prompt;
             if (hintEl) {
-                hintEl.className = "text-xs sm:text-sm font-black text-amber-800 mt-1 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/95 px-3 py-0.5 rounded-full border border-amber-300 shadow-sm";
+                hintEl.className = "text-xs sm:text-sm font-black text-amber-900 mt-1 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/95 px-3 py-0.5 rounded-full border border-amber-300 shadow-sm";
                 hintEl.innerHTML = `<span>👇 拍下面</span><span class="text-emerald-600 font-black">【⭕ 要！】</span><span>定</span><span class="text-rose-600 font-black">【❌ 不要！】</span>`;
             }
 
-            // Run immediately and also on next animation frame so Safari layout is 100% ready
             fitQuestionBannerText();
             requestAnimationFrame(fitQuestionBannerText);
 
@@ -1972,12 +1995,12 @@
             void card.offsetWidth;
 
             if (isCorrect) {
-                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-[2rem] border-4 border-emerald-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
-                titleEl.className = "text-base sm:text-xl font-black text-emerald-600 flex items-center gap-1.5 mb-0.5";
+                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-[1.8rem] border-4 border-emerald-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
+                titleEl.className = "text-lg sm:text-xl font-black text-emerald-600 flex items-center gap-1.5 mb-0.5";
                 titleEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> 答啱啦！好叻呀！ (+200分)`;
             } else {
-                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-[2rem] border-4 border-rose-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
-                titleEl.className = "text-base sm:text-xl font-black text-rose-600 flex items-center gap-1.5 mb-0.5";
+                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-[1.8rem] border-4 border-rose-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
+                titleEl.className = "text-lg sm:text-xl font-black text-rose-600 flex items-center gap-1.5 mb-0.5";
                 titleEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> 小朋友記住呀：`;
             }
 
@@ -2225,8 +2248,9 @@
                 }
             }
 
-            camera.position.set(playerX * 0.28, 5.6, playerZ + 10.5);
-            camera.lookAt(playerX * 0.18, 1.8, playerZ - 10);
+            const camDistZ = window.innerWidth < 640 ? 9.8 : 10.5;
+            camera.position.set(playerX * 0.28, 5.5, playerZ + camDistZ);
+            camera.lookAt(playerX * 0.18, 1.9, playerZ - 10);
 
             checkCollisions();
 
@@ -2324,6 +2348,8 @@
                 }
             };
             document.getElementById('btn-replay-voice').addEventListener('click', replayVoiceHandler);
+            const mobileReplayBtn = document.getElementById('btn-replay-voice-mobile');
+            if (mobileReplayBtn) mobileReplayBtn.addEventListener('click', replayVoiceHandler);
             document.getElementById('question-card').addEventListener('click', replayVoiceHandler);
 
             document.getElementById('btn-voice-toggle').addEventListener('click', (e) => {
@@ -2333,17 +2359,17 @@
                 const text = document.getElementById('text-voice');
                 const btn = document.getElementById('btn-voice-toggle');
                 if (soundFx.voiceEnabled) {
-                    icon.className = 'fa-solid fa-volume-high text-sm';
+                    icon.className = 'fa-solid fa-volume-high text-xs sm:text-sm';
                     text.innerText = '讀題：開';
-                    btn.className = 'btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2.5 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
+                    btn.className = 'btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-xl sm:rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
                     if (sessionQuestions[currentActiveGateIndex]) {
                         soundFx.playQuestionMP3(sessionQuestions[currentActiveGateIndex].audioFile);
                     }
                 } else {
                     soundFx.stopQuestionVoice();
-                    icon.className = 'fa-solid fa-volume-xmark text-sm';
+                    icon.className = 'fa-solid fa-volume-xmark text-xs sm:text-sm';
                     text.innerText = '讀題：關';
-                    btn.className = 'btn-bounce bg-slate-700 hover:bg-slate-600 text-slate-200 font-black px-2.5 sm:px-3 rounded-2xl shadow-lg border-2 border-slate-400 flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
+                    btn.className = 'btn-bounce bg-slate-700 hover:bg-slate-600 text-slate-200 font-black px-2 sm:px-3 rounded-xl sm:rounded-2xl shadow-lg border-2 border-slate-400 flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
                 }
             });
 
@@ -2376,7 +2402,6 @@
             soundFx.initAudio();
             soundFx.startBGM();
 
-            // Rebuild 3D gate textures right before game starts so web fonts are 100% rendered
             buildFixedGateTextures();
 
             sessionQuestions = buildFiveQuestionSession();
@@ -2537,6 +2562,8 @@
             document.getElementById('rule-no-img').src = MASCOT_ASSETS.no;
             document.getElementById('btn-yes-mascot').src = MASCOT_ASSETS.yes;
             document.getElementById('btn-no-mascot').src = MASCOT_ASSETS.no;
+            const mobileNoMascot = document.getElementById('btn-no-mascot-mobile');
+            if (mobileNoMascot) mobileNoMascot.src = MASCOT_ASSETS.no;
 
             preloadMascotImages(() => {
                 initThree();
