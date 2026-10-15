@@ -2501,7 +2501,7 @@
 
                 if (absDist <= SLOWDOWN_ZONE_DIST && absDist > 1.4) {
                     if (!hasChosenInSlowdownZone) {
-                        currentSpeed = BASE_GAME_SPEED * 0.36;
+                        currentSpeed = BASE_GAME_SPEED * 0.5;
                         if (hintEl && !hintEl.classList.contains('animate-pulse-hint')) {
                             hintEl.classList.add('animate-pulse-hint');
                             hintEl.innerHTML = `<span class="text-rose-600 font-black">⏰ 請揀跑道：【⭕ 要！】定【❌ 不要！】</span>`;
