@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>無毒青春：跑道大冒險（嘉年華親子版 v3） - 天主教新民書院 DO NOT 隊伍</title>
+    <meta name="apple-mobile-web-app-title" content="無毒青春跑道">
+    <title>無毒青春：跑道大冒險（可愛嘉年華版 v5） - 天主教新民書院 DO NOT 隊伍</title>
+    <!-- App Icon & Favicon (icon.png) -->
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Cute Rounded Kid-Friendly Google Fonts (M PLUS Rounded 1c + Fredoka + Noto Sans TC) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
     <!-- Three.js Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
+        :root {
+            --cute-font: ui-rounded, 'M PLUS Rounded 1c', 'Fredoka', 'PingFang HK', 'Hiragino Maru Gothic ProN', 'Heiti TC', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
         * {
             user-select: none;
             -webkit-user-select: none;
             -webkit-touch-callout: none;
             touch-action: manipulation;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            font-family: var(--cute-font);
         }
         html, body {
             margin: 0;
@@ -30,76 +41,113 @@
             height: 100%;
             height: 100dvh;
             overflow: hidden;
-            font-family: 'Fredoka', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 60%, #e0f2fe 100%);
+            font-family: var(--cute-font);
+            background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 60%, #fef9c3 100%);
         }
+        /* Cute Candy Polka-Dot Card */
         .carnival-card {
-            background: rgba(255, 255, 255, 0.97);
+            background-color: rgba(255, 255, 255, 0.97);
+            background-image: radial-gradient(rgba(250, 204, 21, 0.16) 2px, transparent 2px), radial-gradient(rgba(56, 189, 248, 0.14) 2px, rgba(255, 255, 255, 0.97) 2px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 4px solid #facc15;
-            box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.28), 0 0 0 4px rgba(255, 255, 255, 0.6) inset;
+            border: 5px solid #facc15;
+            box-shadow: 0 14px 32px -6px rgba(15, 23, 42, 0.26), 0 6px 0 #eab308, 0 0 0 4px rgba(255, 255, 255, 0.9) inset;
         }
+        /* Cute Glossy HUD Pill */
         .hud-pill {
-            background: rgba(15, 23, 42, 0.88);
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.92) 0%, rgba(15, 23, 42, 0.95) 100%);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(250, 204, 21, 0.8);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+            border: 2.5px solid #fde047;
+            box-shadow: 0 4px 0 rgba(202, 138, 4, 0.65), 0 6px 14px rgba(0, 0, 0, 0.22), inset 0 2px 1px rgba(255, 255, 255, 0.25);
         }
+        /* Squishy 3D Jelly YES Button */
         .btn-3d-yes {
-            background: linear-gradient(180deg, #34d399 0%, #10b981 55%, #059669 100%);
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(180deg, #4ade80 0%, #10b981 55%, #059669 100%);
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 0 #047857, 0 14px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 0 #047857, 0 14px 22px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
             transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s ease;
         }
         .btn-3d-yes:active, .btn-3d-yes.active-lane {
-            transform: translateY(5px) scale(0.98);
-            box-shadow: 0 3px 0 #047857, 0 6px 12px rgba(16, 185, 129, 0.5);
+            transform: translateY(5px) scale(0.97);
+            box-shadow: 0 3px 0 #047857, 0 6px 12px rgba(16, 185, 129, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
         .btn-3d-yes.selected-glow {
-            box-shadow: 0 8px 0 #047857, 0 0 28px 8px rgba(52, 211, 153, 0.9);
+            box-shadow: 0 8px 0 #047857, 0 0 28px 8px rgba(52, 211, 153, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
             border-color: #fef08a;
         }
+        /* Squishy 3D Jelly NO Button */
         .btn-3d-no {
+            -webkit-appearance: none;
+            appearance: none;
             background: linear-gradient(180deg, #fb7185 0%, #ef4444 55%, #dc2626 100%);
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 0 #991b1b, 0 14px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 0 #991b1b, 0 14px 22px rgba(0, 0, 0, 0.32), inset 0 4px 0 rgba(255, 255, 255, 0.55);
             transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s ease;
         }
         .btn-3d-no:active, .btn-3d-no.active-lane {
-            transform: translateY(5px) scale(0.98);
-            box-shadow: 0 3px 0 #991b1b, 0 6px 12px rgba(239, 68, 68, 0.5);
+            transform: translateY(5px) scale(0.97);
+            box-shadow: 0 3px 0 #991b1b, 0 6px 12px rgba(239, 68, 68, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
         .btn-3d-no.selected-glow {
-            box-shadow: 0 8px 0 #991b1b, 0 0 28px 8px rgba(251, 113, 133, 0.9);
+            box-shadow: 0 8px 0 #991b1b, 0 0 28px 8px rgba(251, 113, 133, 0.92), inset 0 4px 0 rgba(255, 255, 255, 0.65);
             border-color: #fef08a;
         }
+        /* Cute Jelly Action Button */
+        .btn-jelly-action {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(180deg, #34d399 0%, #10b981 45%, #0ea5e9 100%);
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 0 #0369a1, 0 12px 24px rgba(14, 165, 233, 0.4), inset 0 4px 0 rgba(255, 255, 255, 0.6);
+            transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s ease;
+        }
+        .btn-jelly-action:active {
+            transform: translateY(4px) scale(0.97);
+            box-shadow: 0 2px 0 #0369a1, 0 6px 12px rgba(14, 165, 233, 0.35);
+        }
         .btn-bounce {
+            -webkit-appearance: none;
+            appearance: none;
             transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .btn-bounce:active {
-            transform: scale(0.93);
+            transform: scale(0.92);
+        }
+        /* Cute Sticker Text Shadow */
+        .cute-title-shadow {
+            text-shadow: 0 2px 0 #ffffff, 0 4px 10px rgba(15, 23, 42, 0.15);
         }
         @keyframes popIn {
-            0% { transform: scale(0.8) translateY(-12px); opacity: 0; }
+            0% { transform: scale(0.8) translateY(-10px); opacity: 0; }
             65% { transform: scale(1.04) translateY(2px); opacity: 1; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
         .animate-question-pop {
-            animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: popIn 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
         @keyframes floatMascot {
-            0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
-            50% { transform: translateY(-6px) rotate(1.5deg); }
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-6px) rotate(2deg); }
         }
         .animate-float-mascot {
             animation: floatMascot 2.2s ease-in-out infinite;
         }
-        /* Extended 4.6s Toast Animation so Kids & Parents Have Plenty of Time to Read the Simple Fact */
+        @keyframes starPop {
+            0% { transform: scale(0) rotate(-35deg); opacity: 0; }
+            70% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .animate-star-pop {
+            animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
         @keyframes feedbackToastLong {
             0% { transform: scale(0.65) translateY(25px); opacity: 0; }
-            8% { transform: scale(1.04) translateY(-3px); opacity: 1; }
+            8% { transform: scale(1.03) translateY(-3px); opacity: 1; }
             14% { transform: scale(1) translateY(0); opacity: 1; }
             90% { transform: scale(1) translateY(0); opacity: 1; }
             100% { transform: scale(0.92) translateY(12px); opacity: 0; }
@@ -109,27 +157,20 @@
         }
         @keyframes floatScore {
             0% { transform: translateY(0) scale(0.8); opacity: 1; }
-            50% { transform: translateY(-45px) scale(1.25); opacity: 1; }
-            100% { transform: translateY(-85px) scale(0.95); opacity: 0; }
+            50% { transform: translateY(-42px) scale(1.18); opacity: 1; }
+            100% { transform: translateY(-80px) scale(0.95); opacity: 0; }
         }
         .animate-score-popup {
-            animation: floatScore 0.9s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+            animation: floatScore 0.95s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
         }
         @keyframes pulseSlowdown {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.04); }
         }
         .animate-pulse-hint {
             animation: pulseSlowdown 0.8s ease-in-out infinite;
         }
-        /* Question Text Auto-Sizing to Never Overflow Card */
-        .question-title-fit {
-            font-size: clamp(1.25rem, 3.6vw, 2.25rem);
-            line-height: 1.2;
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
-        /* Kid-Friendly Range Slider Styling for iPad & Touch */
+        /* Kid-Friendly Range Slider Styling for iPad, Safari & Touch */
         input[type="range"].bgm-slider {
             -webkit-appearance: none;
             appearance: none;
@@ -141,8 +182,8 @@
         input[type="range"].bgm-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: #f59e0b;
             border: 3px solid #ffffff;
@@ -153,7 +194,7 @@
             padding-top: max(env(safe-area-inset-top, 0px), 8px);
         }
         .safe-bottom {
-            padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+            padding-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
         }
     </style>
 </head>
@@ -162,214 +203,226 @@
     <!-- 3D Game Canvas Container -->
     <div id="canvas-container" class="w-full h-full absolute inset-0 z-0"></div>
 
-    <!-- Screen Flash on Wrong Choice -->
+    <!-- Celebration Confetti Canvas Overlay (Active on Victory / Result Screen) -->
+    <canvas id="confetti-canvas" class="w-full h-full absolute inset-0 z-45 pointer-events-none hidden"></canvas>
+
+    <!-- Screen Flash on Wrong Choice or Hitting Drug -->
     <div id="damage-flash" class="absolute inset-0 bg-rose-500/35 z-15 pointer-events-none opacity-0 transition-opacity duration-150"></div>
 
     <!-- Dynamic Floating Score Popups Container -->
     <div id="score-popups-container" class="absolute inset-0 z-25 pointer-events-none overflow-hidden flex items-center justify-center"></div>
 
-    <!-- Direct Touch / Click Split Zones for Track (Works on iPad, Phone & PC) -->
+    <!-- Direct Touch / Click Split Zones for Track (Works on iPad, Phone & Mac) -->
     <div id="touch-controller" class="absolute inset-0 z-10 hidden flex">
         <div id="zone-left" class="w-1/2 h-full cursor-pointer" title="拍左邊：⭕ 要！"></div>
         <div id="zone-right" class="w-1/2 h-full cursor-pointer" title="拍右邊：❌ 不要！"></div>
     </div>
 
-    <!-- Mascot Reaction Toast (Extended 4.6s Display with Big, Low-Stroke Kid-Friendly Text) -->
-    <div id="mascot-reaction-container" class="absolute inset-x-0 bottom-32 sm:bottom-40 md:bottom-44 z-30 pointer-events-none flex flex-col items-center justify-center hidden px-3">
-        <div id="mascot-reaction-card" class="px-4 py-3 sm:px-6 sm:py-4 rounded-3xl border-4 shadow-2xl flex items-center gap-3.5 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md">
-            <img id="mascot-reaction-img" src="" alt="吉祥物" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0 drop-shadow-md" />
+    <!-- Cute Mascot Reaction Toast (Extended 4.6s Display) -->
+    <div id="mascot-reaction-container" class="absolute inset-x-0 bottom-28 sm:bottom-36 md:bottom-44 z-30 pointer-events-none flex flex-col items-center justify-center hidden px-3">
+        <div id="mascot-reaction-card" class="px-3.5 py-2.5 sm:px-6 sm:py-4 rounded-[2rem] border-4 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md">
+            <img id="mascot-reaction-img" src="" alt="吉祥物" class="w-14 h-14 sm:w-20 sm:h-20 object-contain shrink-0 drop-shadow-md" />
             <div class="flex-1 min-w-0 text-left">
-                <div id="mascot-reaction-title" class="text-base sm:text-xl font-black flex items-center gap-1.5 mb-1"></div>
-                <div id="mascot-reaction-desc" class="text-sm sm:text-lg font-black text-slate-800 leading-snug break-words"></div>
+                <div id="mascot-reaction-title" class="text-sm sm:text-xl font-black flex items-center gap-1.5 mb-0.5"></div>
+                <div id="mascot-reaction-desc" class="text-xs sm:text-lg font-black text-slate-800 leading-snug break-words"></div>
             </div>
         </div>
     </div>
 
-    <!-- HUD Layer (Designed for iPad Portrait/Landscape, Mobile & Desktop) -->
+    <!-- HUD Layer (Tested for Zero Text Overflow on MacBook Safari, iPad & Mobile) -->
     <div id="hud" class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-2 sm:p-4 safe-top safe-bottom hidden">
         
-        <!-- TOP SECTION: Status Bar + 2D Kid-Friendly Question Banner -->
+        <!-- TOP SECTION: Status Bar + Cute Cloud Question Stage -->
         <div class="w-full max-w-5xl mx-auto flex flex-col gap-1.5 sm:gap-2">
             
-            <!-- Row 1: Controls, BGM Volume Control, Progress Stars, Hearts & Score -->
-            <div class="w-full flex justify-between items-center gap-1.5 sm:gap-2 flex-wrap">
-                <!-- Left Utility Buttons: Pause, Read Toggle, Independent BGM Slider, Quit -->
-                <div class="flex items-center gap-1.5 pointer-events-auto shrink-0">
-                    <button id="btn-pause" type="button" class="btn-bounce bg-slate-900/85 hover:bg-slate-800 text-amber-300 font-black rounded-2xl shadow-lg border-2 border-amber-400/80 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 text-sm sm:text-base" title="暫停 / 音樂設定">
+            <!-- Row 1: Controls, BGM Volume Control, 5-Star Progress & Score -->
+            <div class="w-full flex justify-between items-center gap-1 sm:gap-2">
+                <!-- Left Utility Buttons -->
+                <div class="flex items-center gap-1 sm:gap-1.5 pointer-events-auto shrink-0">
+                    <button id="btn-pause" type="button" class="btn-bounce bg-slate-900/90 hover:bg-slate-800 text-amber-300 font-black rounded-2xl shadow-lg border-2 border-amber-400 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-base" title="暫停 / 音樂設定">
                         <i class="fa-solid fa-pause"></i>
                     </button>
-                    <button id="btn-voice-toggle" type="button" class="btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="開關題目語音">
-                        <i id="icon-voice" class="fa-solid fa-volume-high text-sm"></i>
+                    <button id="btn-voice-toggle" type="button" class="btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap" title="開關題目語音">
+                        <i id="icon-voice" class="fa-solid fa-volume-high text-xs sm:text-sm"></i>
                         <span id="text-voice" class="hidden md:inline">讀題：開</span>
                     </button>
 
                     <!-- Independent BGM Volume Control Pill -->
-                    <div class="hud-pill px-2 sm:px-3 h-9 sm:h-10 rounded-2xl flex items-center gap-1.5 text-white">
-                        <button id="btn-bgm-mute" type="button" class="text-amber-300 hover:text-amber-200 flex items-center justify-center w-5 h-5" title="靜音/開啟背景音樂">
+                    <div class="hud-pill px-2 sm:px-3 h-8 sm:h-10 rounded-2xl flex items-center gap-1.5 text-white">
+                        <button id="btn-bgm-mute" type="button" class="text-amber-300 hover:text-amber-200 flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5" title="靜音/開啟背景音樂">
                             <i id="icon-bgm" class="fa-solid fa-music text-xs sm:text-sm"></i>
                         </button>
-                        <input id="slider-bgm-hud" type="range" min="0" max="100" value="35" class="bgm-slider w-14 sm:w-20" title="獨立調整背景音樂音量" />
+                        <input id="slider-bgm-hud" type="range" min="0" max="100" value="35" class="bgm-slider w-12 sm:w-20" title="獨立調整背景音樂音量" />
                     </div>
 
-                    <button id="btn-quit" type="button" class="btn-bounce bg-rose-600/90 hover:bg-rose-600 text-white font-bold px-2 sm:px-2.5 py-1 rounded-2xl shadow-lg border-2 border-rose-300 flex items-center justify-center h-9 sm:h-10 gap-1 text-xs whitespace-nowrap" title="提早完成">
+                    <button id="btn-quit" type="button" class="btn-bounce bg-rose-500 hover:bg-rose-600 text-white font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs whitespace-nowrap" title="提早結算">
                         <i class="fa-solid fa-flag-checkered"></i>
-                        <span class="hidden lg:inline">完成</span>
+                        <span class="hidden lg:inline">結算</span>
                     </button>
                 </div>
 
                 <!-- Center: Team Logo + 5-Question Star Progress Pill -->
-                <div class="hud-pill px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-white shadow-lg">
-                    <img id="hud-logo-img" src="" alt="DN" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-contain bg-slate-950 p-0.5 border border-amber-300 hidden sm:block" />
-                    <span class="text-[11px] sm:text-xs font-black text-amber-300 whitespace-nowrap hidden xs:inline">進度</span>
-                    <div id="hud-stars" class="flex items-center gap-0.5 sm:gap-1 text-sm sm:text-lg"></div>
+                <div class="hud-pill px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2 text-white shadow-lg shrink-0">
+                    <img id="hud-logo-img" src="" alt="DN" class="w-5 h-5 sm:w-7 sm:h-7 rounded-full object-contain bg-slate-950 p-0.5 border border-amber-300 hidden sm:block" />
+                    <span class="text-[11px] sm:text-xs font-black text-amber-300 whitespace-nowrap hidden sm:inline">闖關星星</span>
+                    <div id="hud-stars" class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-lg leading-none"></div>
                 </div>
 
-                <!-- Right: Hearts & Score -->
-                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                    <div class="hud-pill px-2 sm:px-3 py-1 sm:py-1.5 rounded-2xl flex items-center gap-1 text-white">
-                        <div id="hud-hearts" class="flex items-center gap-0.5"></div>
-                    </div>
-                    <div class="hud-pill px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-2xl flex items-center gap-1.5 text-white">
-                        <i class="fa-solid fa-star text-amber-400 text-sm sm:text-lg"></i>
-                        <div id="hud-score" class="text-sm sm:text-xl font-black text-amber-300 tabular-nums">0</div>
-                    </div>
+                <!-- Right: Cute Score Pill -->
+                <div class="hud-pill px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-2xl flex items-center gap-1.5 text-white shrink-0">
+                    <span class="text-sm sm:text-lg leading-none">⭐</span>
+                    <span class="text-[10px] sm:text-xs font-black text-amber-200 hidden sm:inline">分數</span>
+                    <div id="hud-score" class="text-sm sm:text-xl font-black text-amber-300 tabular-nums leading-none">0</div>
                 </div>
             </div>
 
-            <!-- Row 2: Giant 2D Question Card (Constrained & Auto-Sized so Text NEVER Overflows!) -->
+            <!-- Row 2: Cute Carnival Question Card (With Dynamic JS Auto-Fit so Text NEVER Clips on Safari/Phone!) -->
             <div id="question-banner-wrapper" class="w-full max-w-2xl mx-auto pointer-events-auto">
-                <div id="question-card" class="carnival-card rounded-3xl px-3 py-2 sm:px-5 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4 cursor-pointer active:scale-[0.99] transition-transform overflow-hidden" title="點擊重聽問題語音">
+                <div id="question-card" class="carnival-card rounded-[1.6rem] sm:rounded-[2rem] px-2.5 py-1.5 sm:px-5 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4 cursor-pointer active:scale-[0.99] transition-transform overflow-hidden" title="點擊重聽問題語音">
                     <!-- Mascot Host Avatar -->
-                    <div class="relative shrink-0">
-                        <img id="hud-mascot-host" src="" alt="DO NOT 吉祥物" class="w-12 h-12 sm:w-16 sm:h-16 object-contain animate-float-mascot drop-shadow" />
-                        <span id="question-badge" class="absolute -top-1 -left-1 bg-amber-500 text-white text-[10px] sm:text-xs font-black px-1.5 py-0.5 rounded-full border-2 border-white shadow">
-                            第 1/5 關
+                    <div class="relative shrink-0 flex items-center justify-center">
+                        <img id="hud-mascot-host" src="" alt="DO NOT 吉祥物" class="w-11 h-11 sm:w-16 sm:h-16 object-contain animate-float-mascot drop-shadow" />
+                        <span id="question-badge" class="absolute -top-1 -left-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] sm:text-xs font-black px-1.5 py-0.5 rounded-full border-2 border-white shadow whitespace-nowrap leading-none">
+                            🎈 第 1/5 關
                         </span>
                     </div>
 
-                    <!-- Center Giant Question Text & Emoji (Short, Simple Low-Stroke Words) -->
-                    <div class="flex-1 text-center min-w-0 px-1 overflow-hidden">
-                        <div class="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
-                            <span id="question-emoji" class="text-2xl sm:text-4xl leading-none drop-shadow-sm shrink-0">🌿</span>
-                            <h2 id="question-text" class="question-title-fit font-black text-slate-900 tracking-tight">
+                    <!-- Center Giant Question Text & Emoji (Flex Centered + Dynamic Font Fit) -->
+                    <div id="question-center-box" class="flex-1 text-center min-w-0 px-1 overflow-hidden flex flex-col items-center justify-center">
+                        <div id="question-title-row" class="flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap max-w-full">
+                            <span id="question-emoji" class="text-xl sm:text-4xl leading-none drop-shadow-sm shrink-0">🌿</span>
+                            <h2 id="question-text" class="font-black text-slate-900 tracking-tight m-0 leading-tight cute-title-shadow" style="font-size: 28px;">
                                 食大麻朱古力？
                             </h2>
                         </div>
-                        <div id="thinking-hint" class="text-xs sm:text-sm font-black text-amber-600 mt-0.5 flex items-center justify-center gap-1 flex-wrap">
+                        <div id="thinking-hint" class="text-[11px] sm:text-sm font-black text-amber-700 mt-0.5 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-300">
                             <span>👇 拍下面</span>
                             <span class="text-emerald-600 font-black">【⭕ 要！】</span>
-                            <span>定係</span>
+                            <span>定</span>
                             <span class="text-rose-600 font-black">【❌ 不要！】</span>
                         </div>
                     </div>
 
                     <!-- Replay Audio Button -->
-                    <button id="btn-replay-voice" type="button" class="btn-bounce shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-100 hover:bg-sky-200 border-2 border-sky-400 text-sky-700 flex flex-col items-center justify-center shadow-sm" title="重聽題目語音">
-                        <i class="fa-solid fa-volume-high text-base sm:text-lg"></i>
-                        <span class="text-[9px] font-black leading-none mt-0.5">重聽</span>
+                    <button id="btn-replay-voice" type="button" class="btn-bounce shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-b from-sky-100 to-sky-200 hover:from-sky-200 hover:to-sky-300 border-2 border-sky-400 text-sky-800 flex flex-col items-center justify-center shadow-sm" title="重聽題目語音">
+                        <i class="fa-solid fa-volume-high text-sm sm:text-lg leading-none text-sky-600"></i>
+                        <span class="text-[9px] sm:text-[10px] font-black leading-none mt-0.5">重聽</span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- BOTTOM SECTION: Giant Kid-Friendly 「⭕ 要！」 vs 「❌ 不要！」 Buttons -->
+        <!-- BOTTOM SECTION: Giant Cute Jelly 「⭕ 要！」 vs 「❌ 不要！」 Arcade Pads -->
         <div class="w-full max-w-4xl mx-auto pointer-events-auto px-1 sm:px-4">
-            <div class="grid grid-cols-2 gap-3 sm:gap-6 items-end">
+            <div class="grid grid-cols-2 gap-2.5 sm:gap-6 items-stretch">
                 
                 <!-- LEFT BUTTON: ⭕ 要！ (YES) -->
-                <button id="btn-left" type="button" class="btn-3d-yes rounded-3xl p-2 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
-                    <img id="btn-yes-mascot" src="" alt="要" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
-                    <div class="text-left">
-                        <div class="text-xs sm:text-sm font-black text-emerald-100 tracking-wider uppercase flex items-center gap-1">
-                            <i class="fa-solid fa-arrow-left"></i> 左邊
+                <button id="btn-left" type="button" class="btn-3d-yes rounded-[1.6rem] sm:rounded-[2rem] px-2.5 py-2 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
+                    <img id="btn-yes-mascot" src="" alt="要" class="w-11 h-11 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
+                    <div class="text-left flex flex-col justify-center min-w-0">
+                        <div class="text-[10px] sm:text-xs font-black text-emerald-950 bg-emerald-200/90 px-2 py-0.5 rounded-full w-fit flex items-center gap-1 whitespace-nowrap leading-none mb-1">
+                            <i class="fa-solid fa-arrow-left"></i> 左邊跑道
                         </div>
-                        <div class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_4px_rgba(0,0,0,0.3)] leading-none mt-0.5">
+                        <div class="text-xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.28)] whitespace-nowrap leading-none">
                             ⭕ 要！
                         </div>
-                        <div class="text-[11px] sm:text-xs font-bold text-white/95 mt-1 hidden xs:block">
-                            好習慣 👍
+                        <div class="text-[10px] sm:text-xs font-black text-emerald-50 mt-1 hidden sm:block whitespace-nowrap">
+                            ✨ 正確好行為 👍
                         </div>
                     </div>
                 </button>
 
                 <!-- RIGHT BUTTON: ❌ 不要！ (DO NOT) -->
-                <button id="btn-right" type="button" class="btn-3d-no rounded-3xl p-2 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
-                    <div class="text-right">
-                        <div class="text-xs sm:text-sm font-black text-rose-100 tracking-wider uppercase flex items-center justify-end gap-1">
-                            右邊 <i class="fa-solid fa-arrow-right"></i>
+                <button id="btn-right" type="button" class="btn-3d-no rounded-[1.6rem] sm:rounded-[2rem] px-2.5 py-2 sm:p-3.5 md:p-4 flex items-center justify-center gap-2 sm:gap-4 text-white relative overflow-hidden group">
+                    <div class="text-right flex flex-col justify-center items-end min-w-0">
+                        <div class="text-[10px] sm:text-xs font-black text-rose-950 bg-rose-200/90 px-2 py-0.5 rounded-full w-fit flex items-center justify-end gap-1 whitespace-nowrap leading-none mb-1">
+                            右邊跑道 <i class="fa-solid fa-arrow-right"></i>
                         </div>
-                        <div class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_4px_rgba(0,0,0,0.3)] leading-none mt-0.5">
+                        <div class="text-xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-[0_3px_3px_rgba(0,0,0,0.28)] whitespace-nowrap leading-none">
                             ❌ 不要！
                         </div>
-                        <div class="text-[11px] sm:text-xs font-bold text-amber-200 mt-1 hidden xs:block">
-                            遠離毒品 🙅‍♂️
+                        <div class="text-[10px] sm:text-xs font-black text-amber-200 mt-1 hidden sm:block whitespace-nowrap">
+                            🚫 遠離毒品 DO NOT
                         </div>
                     </div>
-                    <img id="btn-no-mascot" src="" alt="不要" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
+                    <img id="btn-no-mascot" src="" alt="不要" class="w-11 h-11 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain drop-shadow-md group-hover:scale-105 transition-transform shrink-0" />
                 </button>
 
             </div>
         </div>
     </div>
 
-    <!-- START SCREEN OVERLAY (Bright Carnival Theme + Official Team Logo + BGM Volume Control) -->
-    <div id="screen-start" class="absolute inset-0 z-40 flex items-center justify-center p-3 sm:p-5 bg-sky-950/60 backdrop-blur-md overflow-y-auto">
-        <div class="carnival-card max-w-xl w-full p-4 sm:p-6 rounded-[2rem] text-center relative my-auto">
+    <!-- CUTE START SCREEN OVERLAY (Safari, iPad & Mobile Responsive) -->
+    <div id="screen-start" class="absolute inset-0 z-40 flex items-center justify-center p-2.5 sm:p-5 bg-sky-950/55 backdrop-blur-md overflow-y-auto">
+        <div class="carnival-card max-w-xl w-full p-3.5 sm:p-6 rounded-[2rem] sm:rounded-[2.4rem] text-center relative my-auto">
             
             <!-- Team Crest & Mascot Hero Banner -->
-            <div class="flex items-center justify-center gap-3 sm:gap-4 mb-2">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950 border-2 border-amber-400 p-1 shadow-lg flex items-center justify-center shrink-0">
+            <div class="flex items-center justify-center gap-2 sm:gap-4 mb-2">
+                <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-slate-950 border-4 border-amber-400 p-1 shadow-lg flex items-center justify-center shrink-0">
                     <img id="start-logo-img" src="" alt="DO NOT 隊徽" class="w-full h-full object-contain rounded-full" />
                 </div>
-                <div class="text-left">
-                    <div class="inline-block bg-amber-400 text-slate-950 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full tracking-wider uppercase mb-0.5">
-                        西九龍禁毒嘉年華 ‧ 攤位遊戲
+                <div class="text-left min-w-0">
+                    <div class="inline-block bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-500 shadow-sm mb-0.5 whitespace-nowrap">
+                        🎪 西九龍禁毒嘉年華 ‧ 攤位遊戲
                     </div>
-                    <div class="text-xs sm:text-sm font-black text-sky-900">第五屆禁毒領袖學院</div>
-                    <div class="text-xs sm:text-sm font-black text-rose-600">天主教新民書院 DO NOT 隊伍</div>
+                    <div class="text-xs sm:text-sm font-black text-sky-900 truncate">第五屆禁毒領袖學院</div>
+                    <div class="text-xs sm:text-sm font-black text-rose-600 truncate">天主教新民書院 DO NOT 隊伍</div>
                 </div>
-                <img id="start-mascot-img" src="" alt="吉祥物" class="w-16 h-16 sm:w-20 sm:h-20 object-contain animate-float-mascot drop-shadow-lg shrink-0" />
+                <img id="start-mascot-img" src="" alt="吉祥物" class="w-14 h-14 sm:w-20 sm:h-20 object-contain animate-float-mascot drop-shadow-lg shrink-0" />
             </div>
 
-            <h1 class="text-2xl sm:text-4xl font-black text-slate-900 mb-1 tracking-tight">
+            <h1 id="start-main-title" class="text-xl sm:text-4xl font-black text-slate-900 mb-1 tracking-tight cute-title-shadow">
                 🌈 無毒青春：跑道大冒險
             </h1>
-            <p class="text-amber-600 text-xs sm:text-base mb-2.5 font-black">
+            <div class="inline-block bg-rose-100 border-2 border-rose-300 text-rose-600 text-xs sm:text-sm px-3 py-0.5 rounded-full mb-2.5 font-black">
                 🔥 一齊向毒品大聲講「不要 DO NOT！」 🔥
-            </p>
+            </div>
 
             <!-- Kid-Friendly Visual Instructions (⭕ 要 vs ❌ 不要) -->
-            <div class="grid grid-cols-2 gap-2.5 sm:gap-3 mb-2.5 text-left">
-                <div class="bg-emerald-50 border-2 border-emerald-400 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-sm">
-                    <img id="rule-yes-img" src="" alt="要" class="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0" />
-                    <div>
-                        <div class="text-sm sm:text-base font-black text-emerald-700">左邊：⭕ 要！</div>
-                        <div class="text-xs font-bold text-slate-700 leading-tight">搵家人幫手、見毒品報警、保護自己！</div>
+            <div class="grid grid-cols-2 gap-2 sm:gap-3 mb-2.5 text-left">
+                <div class="bg-gradient-to-b from-emerald-50 to-emerald-100/80 border-3 border-emerald-400 rounded-2xl p-2 sm:p-3 flex items-center gap-2 shadow-sm" style="border-width: 3px;">
+                    <img id="rule-yes-img" src="" alt="要" class="w-10 h-10 sm:w-14 sm:h-14 object-contain shrink-0 drop-shadow" />
+                    <div class="min-w-0">
+                        <div class="text-xs sm:text-base font-black text-emerald-800">左邊：⭕ 要！</div>
+                        <div class="text-[11px] sm:text-xs font-bold text-slate-700 leading-tight mt-0.5">搵爸媽幫手、見毒品報警、保護自己！</div>
                     </div>
                 </div>
-                <div class="bg-rose-50 border-2 border-rose-400 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-sm">
-                    <img id="rule-no-img" src="" alt="不要" class="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0" />
-                    <div>
-                        <div class="text-sm sm:text-base font-black text-rose-700">右邊：❌ 不要！</div>
-                        <div class="text-xs font-bold text-slate-700 leading-tight">大麻朱古力、亂飲咳藥水、試食毒品！</div>
+                <div class="bg-gradient-to-b from-rose-50 to-rose-100/80 border-3 border-rose-400 rounded-2xl p-2 sm:p-3 flex items-center gap-2 shadow-sm" style="border-width: 3px;">
+                    <img id="rule-no-img" src="" alt="不要" class="w-10 h-10 sm:w-14 sm:h-14 object-contain shrink-0 drop-shadow" />
+                    <div class="min-w-0">
+                        <div class="text-xs sm:text-base font-black text-rose-800">右邊：❌ 不要！</div>
+                        <div class="text-[11px] sm:text-xs font-bold text-slate-700 leading-tight mt-0.5">大麻朱古力、亂飲咳藥水、試食毒品！</div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Cute Random Star (+300) OR Drug (-300) Rule Pill -->
+            <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-rose-50 rounded-2xl px-3 py-2 mb-2.5 border-2 border-amber-300 flex items-center justify-around gap-2 text-xs sm:text-sm font-black text-slate-800 shadow-inner">
+                <div class="flex items-center gap-1.5 text-amber-700">
+                    <span class="text-base sm:text-xl">⭐</span>
+                    <span>執到星星 <b class="text-emerald-600">+300分</b></span>
+                </div>
+                <div class="h-4 w-0.5 bg-amber-300"></div>
+                <div class="flex items-center gap-1.5 text-rose-700">
+                    <span class="text-base sm:text-xl">☠️</span>
+                    <span>避開毒品 <b class="text-rose-600">-300分</b></span>
                 </div>
             </div>
 
             <!-- Independent Background Music (bgm.mp3) Volume Slider on Start Screen -->
-            <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl px-3.5 py-2 mb-2.5 flex items-center justify-between gap-3 text-xs sm:text-sm">
-                <div class="flex items-center gap-2 font-black text-sky-900 shrink-0">
+            <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl px-3 py-1.5 sm:py-2 mb-2.5 flex items-center justify-between gap-2 text-xs sm:text-sm">
+                <div class="flex items-center gap-1.5 font-black text-sky-900 shrink-0">
                     <i class="fa-solid fa-music text-amber-500"></i>
-                    <span>背景音樂 (bgm.mp3) 音量：</span>
+                    <span>背景音樂音量：</span>
                 </div>
-                <div class="flex items-center gap-2 flex-1 max-w-[200px]">
+                <div class="flex items-center gap-2 flex-1 max-w-[190px]">
                     <input id="slider-bgm-start" type="range" min="0" max="100" value="35" class="bgm-slider w-full" />
                     <span id="label-bgm-vol" class="font-black text-sky-800 w-9 text-right tabular-nums">35%</span>
                 </div>
             </div>
 
             <!-- Official Police Anti-Drug Notice -->
-            <div class="bg-slate-900 text-white border-2 border-amber-400 p-2.5 sm:p-3 rounded-2xl text-left mb-3 text-[11px] sm:text-xs leading-relaxed">
+            <div class="bg-slate-900 text-white border-2 border-amber-400 p-2 sm:p-2.5 rounded-2xl text-left mb-2.5 sm:mb-3 text-[10px] sm:text-xs leading-relaxed">
                 <div class="font-black text-amber-300 flex items-center gap-1.5 mb-0.5">
                     <i class="fa-solid fa-bullhorn text-amber-400"></i> 重要禁毒訊息：
                 </div>
@@ -379,12 +432,12 @@
                 </p>
             </div>
 
-            <button id="btn-start" type="button" class="btn-bounce w-full py-3.5 sm:py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 hover:from-emerald-400 hover:to-sky-400 text-white font-black text-xl sm:text-2xl rounded-2xl shadow-xl border-4 border-white flex items-center justify-center gap-3 mb-1.5">
-                <i class="fa-solid fa-play"></i>
-                <span>開始 5 關大挑戰！</span>
+            <button id="btn-start" type="button" class="btn-jelly-action w-full py-3 sm:py-4 text-white font-black text-lg sm:text-2xl rounded-2xl flex items-center justify-center gap-2.5 mb-1.5">
+                <i class="fa-solid fa-rocket"></i>
+                <span>開始 5 關大冒險！</span>
             </button>
 
-            <button id="btn-show-disclaimer" type="button" class="text-xs font-bold text-slate-500 hover:text-slate-800 underline flex items-center justify-center gap-1 mx-auto py-0.5">
+            <button id="btn-show-disclaimer" type="button" class="text-[11px] sm:text-xs font-bold text-slate-500 hover:text-slate-800 underline flex items-center justify-center gap-1 mx-auto py-0.5">
                 <i class="fa-solid fa-scale-balanced"></i> 遊戲開發 AI 技術免責聲明
             </button>
         </div>
@@ -431,25 +484,25 @@
         </div>
     </div>
 
-    <!-- Pause Screen (Includes BGM Volume Slider) -->
-    <div id="screen-pause" class="absolute inset-0 z-40 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden">
-        <div class="carnival-card max-w-sm w-full p-6 rounded-3xl text-center">
-            <img id="pause-mascot-img" src="" alt="吉祥物" class="w-24 h-24 mx-auto mb-2 object-contain animate-float-mascot" />
-            <h2 class="text-2xl font-black text-slate-900 mb-1">遊戲暫停</h2>
+    <!-- Cute Pause Screen -->
+    <div id="screen-pause" class="absolute inset-0 z-40 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md hidden">
+        <div class="carnival-card max-w-sm w-full p-5 sm:p-6 rounded-[2.2rem] text-center">
+            <img id="pause-mascot-img" src="" alt="吉祥物" class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 object-contain animate-float-mascot" />
+            <h2 class="text-2xl font-black text-slate-900 mb-1">⏸️ 休息一下</h2>
             <p class="text-rose-600 text-sm mb-4 font-black">天主教新民書院 DO NOT 隊伍：「向毒品講唔要！」</p>
 
             <!-- BGM Volume Slider inside Pause Modal -->
             <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl p-3 mb-4 text-left">
                 <div class="flex items-center justify-between text-xs font-black text-sky-900 mb-1.5">
-                    <span><i class="fa-solid fa-music text-amber-500 mr-1"></i> 背景音樂 (bgm.mp3) 音量</span>
+                    <span><i class="fa-solid fa-music text-amber-500 mr-1"></i> 背景音樂音量</span>
                     <span id="label-bgm-pause">35%</span>
                 </div>
                 <input id="slider-bgm-pause" type="range" min="0" max="100" value="35" class="bgm-slider w-full" />
             </div>
 
             <div class="space-y-3">
-                <button id="btn-resume" type="button" class="btn-bounce w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-black rounded-2xl shadow-lg border-2 border-emerald-600 flex items-center justify-center gap-2 text-lg">
-                    <i class="fa-solid fa-play"></i> 繼續玩
+                <button id="btn-resume" type="button" class="btn-jelly-action w-full py-3.5 text-white font-black rounded-2xl flex items-center justify-center gap-2 text-lg">
+                    <i class="fa-solid fa-play"></i> 繼續冒險
                 </button>
                 <button id="btn-restart-pause" type="button" class="btn-bounce w-full py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-2xl border-2 border-amber-500 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-rotate-right"></i> 重新開始（下一位）
@@ -458,51 +511,73 @@
         </div>
     </div>
 
-    <!-- Victory / Result Screen (No Voice Readout on Result Screen as Requested) -->
-    <div id="screen-gameover" class="absolute inset-0 z-40 flex items-center justify-center p-3 sm:p-4 bg-sky-950/75 backdrop-blur-lg hidden overflow-y-auto">
-        <div class="carnival-card max-w-md w-full p-4 sm:p-6 rounded-[2rem] text-center relative my-auto">
+    <!-- SUPER CUTE KID-FRIENDLY CELEBRATION RESULT SCREEN -->
+    <div id="screen-gameover" class="absolute inset-0 z-40 flex items-center justify-center p-2.5 sm:p-4 bg-sky-950/70 backdrop-blur-lg hidden overflow-y-auto">
+        <div class="carnival-card max-w-md w-full p-4 sm:p-6 rounded-[2.2rem] text-center relative my-auto overflow-hidden">
             
-            <div class="flex items-center justify-center gap-3 mb-2">
-                <img id="result-mascot-img" src="" alt="吉祥物" class="w-20 h-20 sm:w-24 sm:h-24 object-contain animate-float-mascot drop-shadow-lg" />
-                <div class="text-left">
-                    <div id="result-badge" class="inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-black bg-amber-400 text-slate-950 border-2 border-white shadow mb-1">
-                        🏆 禁毒小隊長
-                    </div>
-                    <h2 id="result-title" class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
-                        成功過關！
+            <!-- Cute Rainbow Top Ribbon -->
+            <div id="result-badge" class="inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 border-2 border-white shadow-md mb-1.5">
+                👑 超級無毒小狀元
+            </div>
+
+            <!-- Animated 5-Star Celebration Bar -->
+            <div id="result-star-ribbon" class="flex items-center justify-center gap-1.5 sm:gap-2 my-1 min-h-[36px]">
+                <!-- Populated dynamically with bouncing stars -->
+            </div>
+
+            <!-- Mascot & Praise Title -->
+            <div class="flex items-center justify-center gap-3 my-1.5">
+                <img id="result-mascot-img" src="" alt="吉祥物" class="w-20 h-20 sm:w-24 sm:h-24 object-contain animate-float-mascot drop-shadow-xl shrink-0" />
+                <div class="text-left min-w-0">
+                    <h2 id="result-title" class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight cute-title-shadow">
+                        🎉 5 關全中！
                     </h2>
+                    <p id="result-subtitle" class="text-slate-700 text-xs sm:text-sm mt-1 font-black leading-snug">
+                        好叻呀！一齊向毒品大聲講「不要 DO NOT！」
+                    </p>
                 </div>
             </div>
 
-            <p id="result-subtitle" class="text-slate-700 text-sm sm:text-base mb-3 font-black">
-                好叻呀！記住一齊向毒品大聲講「不要 DO NOT！」
-            </p>
+            <!-- Cute Pastel Sticker Stats Grid (4 Kid-Friendly Cards) -->
+            <div class="grid grid-cols-2 gap-2 sm:gap-2.5 my-3 text-center">
+                <!-- Card 1: Correct Gates -->
+                <div class="p-2.5 bg-gradient-to-b from-emerald-50 to-emerald-100/90 rounded-2xl border-2 border-emerald-300 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-[11px] sm:text-xs text-emerald-800 font-black mb-0.5 flex items-center gap-1">
+                        <span>🎯</span> <span>答啱題目</span>
+                    </div>
+                    <div id="final-gates" class="text-xl sm:text-2xl font-black text-emerald-600 leading-tight">5 / 5 題</div>
+                </div>
 
-            <!-- Stats Grid -->
-            <div class="bg-sky-50 rounded-2xl p-2.5 sm:p-3 mb-3 border-2 border-sky-200 grid grid-cols-2 gap-2 text-center">
-                <div class="p-2 bg-white rounded-xl border border-sky-100 shadow-sm">
-                    <div class="text-xs text-slate-500 font-bold mb-0.5">答啱問題</div>
-                    <div id="final-gates" class="text-xl sm:text-2xl font-black text-emerald-600">5 / 5 題</div>
+                <!-- Card 2: Total Score -->
+                <div class="p-2.5 bg-gradient-to-b from-amber-50 to-yellow-100/90 rounded-2xl border-2 border-amber-300 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-[11px] sm:text-xs text-amber-900 font-black mb-0.5 flex items-center gap-1">
+                        <span>🏆</span> <span>今次總分</span>
+                    </div>
+                    <div id="final-score" class="text-xl sm:text-2xl font-black text-amber-600 tabular-nums leading-tight">0</div>
                 </div>
-                <div class="p-2 bg-white rounded-xl border border-sky-100 shadow-sm">
-                    <div class="text-xs text-slate-500 font-bold mb-0.5">今次分數</div>
-                    <div id="final-score" class="text-xl sm:text-2xl font-black text-amber-500">0</div>
+
+                <!-- Card 3: Stars & Drugs -->
+                <div class="p-2.5 bg-gradient-to-b from-purple-50 to-pink-100/80 rounded-2xl border-2 border-purple-300 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-[11px] sm:text-xs text-purple-900 font-black mb-0.5 flex items-center gap-1">
+                        <span>✨</span> <span>跑道表現</span>
+                    </div>
+                    <div id="final-items" class="text-xs sm:text-sm font-black text-purple-700 leading-tight mt-0.5">⭐ 0 粒 ｜ ☠️ 0 次</div>
                 </div>
-                <div class="p-2 bg-white rounded-xl border border-sky-100 shadow-sm">
-                    <div class="text-xs text-slate-500 font-bold mb-0.5">健康心心</div>
-                    <div id="final-lives" class="flex items-center justify-center gap-1 mt-1"></div>
-                </div>
-                <div class="p-2 bg-white rounded-xl border border-sky-100 shadow-sm">
-                    <div class="text-xs text-slate-500 font-bold mb-0.5">最高分數</div>
-                    <div id="best-score" class="text-xl sm:text-2xl font-black text-sky-600">0</div>
+
+                <!-- Card 4: Best Record -->
+                <div class="p-2.5 bg-gradient-to-b from-sky-50 to-sky-100/90 rounded-2xl border-2 border-sky-300 shadow-sm flex flex-col items-center justify-center">
+                    <div class="text-[11px] sm:text-xs text-sky-900 font-black mb-0.5 flex items-center gap-1">
+                        <span>👑</span> <span>最高紀錄</span>
+                    </div>
+                    <div id="best-score" class="text-xl sm:text-2xl font-black text-sky-600 tabular-nums leading-tight">0</div>
                 </div>
             </div>
 
-            <!-- Team Credit & Hotline Compact Box with Real Team Logo -->
-            <div class="bg-slate-900 text-white rounded-2xl p-2.5 sm:p-3 mb-3 text-left border-2 border-amber-400 text-[11px] leading-relaxed">
-                <div class="flex items-center gap-2 mb-1.5 pb-1.5 border-b border-slate-700">
-                    <img id="result-logo-img" src="" alt="DN" class="w-8 h-8 rounded-full object-contain bg-slate-950 border border-amber-400 shrink-0" />
-                    <span class="font-black text-amber-300 text-xs">天主教新民書院 ‧ 第五屆禁毒領袖學院 DO NOT 隊伍</span>
+            <!-- Team Credit & Hotline Compact Box with Official Team Logo -->
+            <div class="bg-slate-900 text-white rounded-2xl p-2.5 sm:p-3 mb-3 text-left border-2 border-amber-400 text-[10px] sm:text-[11px] leading-relaxed shadow-md">
+                <div class="flex items-center gap-2 mb-1 pb-1 border-b border-slate-700">
+                    <img id="result-logo-img" src="" alt="DN" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-contain bg-slate-950 border border-amber-400 shrink-0" />
+                    <span class="font-black text-amber-300 text-xs truncate">天主教新民書院 ‧ 第五屆禁毒領袖學院 DO NOT 隊伍</span>
                 </div>
                 <div class="text-slate-200 font-bold">
                     📞 警察毒品舉報熱線：<span class="text-amber-300">2527-1234</span> ｜ 依托咪酯舉報：<span class="text-amber-300">6629-2966</span>
@@ -511,10 +586,10 @@
 
             <!-- 1-Click Instant Next Player Button -->
             <div class="flex flex-col sm:flex-row gap-2">
-                <button id="btn-next-player" type="button" class="btn-bounce flex-1 py-3.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 hover:from-emerald-400 hover:to-sky-400 text-white font-black text-lg sm:text-xl rounded-2xl shadow-lg border-4 border-white flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> 下一位小朋友（即刻開始）
+                <button id="btn-next-player" type="button" class="btn-jelly-action flex-1 py-3.5 text-white font-black text-lg sm:text-xl rounded-2xl flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> 下一位小朋友（即刻出發！）
                 </button>
-                <button id="btn-replay" type="button" class="btn-bounce sm:w-28 py-3 bg-amber-100 hover:bg-amber-200 text-slate-800 font-black text-sm rounded-2xl border-2 border-amber-400 flex items-center justify-center gap-1.5">
+                <button id="btn-replay" type="button" class="btn-bounce sm:w-24 py-3 bg-amber-100 hover:bg-amber-200 text-slate-800 font-black text-sm rounded-2xl border-2 border-amber-400 flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-house"></i> 主頁
                 </button>
             </div>
@@ -532,14 +607,96 @@
         };
     </script>
 
-    <!-- Custom MP3 Voice Engine + BGM Auto-Ducking + Rich Correct/Wrong Sound Effects -->
+    <!-- Celebration Confetti Shower Engine for Cute Result Screen -->
+    <script>
+        class ConfettiCelebration {
+            constructor() {
+                this.canvas = document.getElementById('confetti-canvas');
+                this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+                this.particles = [];
+                this.active = false;
+                this.rafId = null;
+                this.colors = ['#facc15', '#34d399', '#fb7185', '#38bdf8', '#c084fc', '#fb923c'];
+            }
+
+            start() {
+                if (!this.canvas || !this.ctx) return;
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                this.canvas.classList.remove('hidden');
+                this.active = true;
+                this.particles = [];
+
+                for (let i = 0; i < 85; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * -this.canvas.height,
+                        size: 7 + Math.random() * 8,
+                        speedY: 2.2 + Math.random() * 3.5,
+                        speedX: (Math.random() - 0.5) * 2.5,
+                        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                        angle: Math.random() * Math.PI * 2,
+                        spin: (Math.random() - 0.5) * 0.15,
+                        isCircle: Math.random() > 0.5
+                    });
+                }
+
+                if (this.rafId) cancelAnimationFrame(this.rafId);
+                this.loop();
+            }
+
+            stop() {
+                this.active = false;
+                if (this.rafId) {
+                    cancelAnimationFrame(this.rafId);
+                    this.rafId = null;
+                }
+                if (this.canvas) {
+                    this.canvas.classList.add('hidden');
+                }
+            }
+
+            loop() {
+                if (!this.active || !this.ctx || !this.canvas) return;
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX + Math.sin(p.y * 0.02) * 0.6;
+                    p.angle += p.spin;
+
+                    if (p.y > this.canvas.height + 20) {
+                        p.y = -15;
+                        p.x = Math.random() * this.canvas.width;
+                    }
+
+                    this.ctx.save();
+                    this.ctx.translate(p.x, p.y);
+                    this.ctx.rotate(p.angle);
+                    this.ctx.fillStyle = p.color;
+                    if (p.isCircle) {
+                        this.ctx.beginPath();
+                        this.ctx.arc(0, 0, p.size * 0.5, 0, Math.PI * 2);
+                        this.ctx.fill();
+                    } else {
+                        this.ctx.fillRect(-p.size * 0.5, -p.size * 0.35, p.size, p.size * 0.7);
+                    }
+                    this.ctx.restore();
+                });
+
+                this.rafId = requestAnimationFrame(() => this.loop());
+            }
+        }
+        let confettiFx = null;
+    </script>
+
+    <!-- Custom MP3 Voice Engine + BGM Auto-Ducking + Rich Correct/Wrong/Star/Drug Sound Effects -->
     <script>
         class SoundAndVoiceFX {
             constructor() {
                 this.ctx = null;
                 this.voiceEnabled = true;
 
-                // Background Music (bgm.mp3) with independent volume & auto-ducking
                 this.bgmUserVolume = parseFloat(localStorage.getItem('antidrug_bgm_volume') ?? '0.35');
                 this.bgmMuted = false;
                 this.isDucking = false;
@@ -548,11 +705,9 @@
                 this.bgmAudio.preload = 'auto';
                 this.updateBgmEffectiveVolume();
 
-                // Currently playing question voice Audio instance (q1.mp3 ~ q8.mp3)
                 this.currentQuestionAudio = null;
                 this.duckRestoreTimer = null;
 
-                // Preload question audio objects
                 this.questionAudioCache = {};
                 for (let i = 1; i <= 8; i++) {
                     const file = `q${i}.mp3`;
@@ -571,13 +726,10 @@
                 }
             }
 
-            // Start or resume bgm.mp3
             startBGM() {
                 this.updateBgmEffectiveVolume();
                 if (this.bgmAudio.paused && !this.bgmMuted && this.bgmUserVolume > 0) {
-                    this.bgmAudio.play().catch(() => {
-                        // Gracefully ignore if bgm.mp3 is not yet placed in folder
-                    });
+                    this.bgmAudio.play().catch(() => {});
                 }
             }
 
@@ -608,7 +760,6 @@
                 return this.bgmMuted;
             }
 
-            // Automatically lowers BGM to 18% of its set volume when a question MP3 is reading
             updateBgmEffectiveVolume() {
                 if (this.bgmMuted || this.bgmUserVolume <= 0) {
                     this.bgmAudio.volume = 0;
@@ -634,7 +785,6 @@
                 this.updateBgmEffectiveVolume();
             }
 
-            // Play custom MP3 file (q1.mp3 ~ q8.mp3) for the active question & auto-duck BGM
             playQuestionMP3(audioFile) {
                 if (!this.voiceEnabled || !audioFile) return;
 
@@ -645,7 +795,6 @@
                 audio.volume = 1.0;
                 audio.currentTime = 0;
 
-                // Duck BGM while reading question
                 this.isDucking = true;
                 this.updateBgmEffectiveVolume();
 
@@ -664,10 +813,8 @@
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
-                        // Safety fallback timer in case onended doesn't fire (max 5s ducking)
                         this.duckRestoreTimer = setTimeout(restoreBgm, 5000);
                     }).catch(() => {
-                        // If MP3 file is missing or blocked, immediately restore BGM volume
                         restoreBgm();
                     });
                 }
@@ -679,8 +826,8 @@
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(420, now);
-                osc.frequency.exponentialRampToValueAtTime(660, now + 0.08);
+                osc.frequency.setValueAtTime(460, now);
+                osc.frequency.exponentialRampToValueAtTime(720, now + 0.08);
                 gain.gain.setValueAtTime(0.18, now);
                 gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
                 osc.connect(gain);
@@ -689,12 +836,10 @@
                 osc.stop(now + 0.08);
             }
 
-            // Distinct, Crisp Game-Show "Ding-Dong-Ding! 🎉" Correct Answer Sound Effect
             playGatePositive() {
                 this.initAudio();
                 if (!this.ctx) return;
                 const now = this.ctx.currentTime;
-                // Bright major chord chime (C5 -> E5 -> G5 -> C6)
                 const notes = [
                     { freq: 523.25, delay: 0.00, dur: 0.22 },
                     { freq: 659.25, delay: 0.08, dur: 0.22 },
@@ -702,7 +847,6 @@
                     { freq: 1046.50, delay: 0.24, dur: 0.45 }
                 ];
                 notes.forEach(n => {
-                    // Main bell tone
                     const osc = this.ctx.createOscillator();
                     const gain = this.ctx.createGain();
                     osc.type = 'triangle';
@@ -714,7 +858,6 @@
                     osc.start(now + n.delay);
                     osc.stop(now + n.delay + n.dur);
 
-                    // Sparkle harmonic overtone
                     const osc2 = this.ctx.createOscillator();
                     const gain2 = this.ctx.createGain();
                     osc2.type = 'sine';
@@ -728,12 +871,10 @@
                 });
             }
 
-            // Unmistakable Game-Show "Bzzz-Bzzz! ❌" Wrong Answer Buzzer Sound Effect
             playGateNegative() {
                 this.initAudio();
                 if (!this.ctx) return;
                 const now = this.ctx.currentTime;
-                // Two-pulse low warning buzzer
                 const pulses = [
                     { freq1: 196.00, freq2: 185.00, start: 0.00, dur: 0.20 },
                     { freq1: 146.83, freq2: 138.59, start: 0.23, dur: 0.36 }
@@ -754,7 +895,8 @@
                 });
             }
 
-            playCoin() {
+            playStarCollect() {
+                this.initAudio();
                 if (!this.ctx) return;
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
@@ -762,12 +904,30 @@
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(987.77, now);
                 osc.frequency.setValueAtTime(1318.51, now + 0.07);
-                gain.gain.setValueAtTime(0.20, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+                osc.frequency.setValueAtTime(1567.98, now + 0.14);
+                gain.gain.setValueAtTime(0.28, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start(now);
-                osc.stop(now + 0.18);
+                osc.stop(now + 0.28);
+            }
+
+            playDrugHit() {
+                this.initAudio();
+                if (!this.ctx) return;
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(260, now);
+                osc.frequency.linearRampToValueAtTime(110, now + 0.32);
+                gain.gain.setValueAtTime(0.32, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.32);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.32);
             }
 
             playVictory() {
@@ -794,11 +954,6 @@
 
     <!-- Curated 8-Question Bank (4 ❌ 不要 + 4 ⭕ 要) with Dedicated Audio Filenames (q1.mp3 ~ q8.mp3) -->
     <script>
-        /**
-         * Curated 8 Questions:
-         * - q1.mp3 ~ q4.mp3: ❌ 不要 (DO NOT)
-         * - q5.mp3 ~ q8.mp3: ⭕ 要 (YES)
-         */
         const kidQuestionBank = [
             // ================= ❌ 不要 (Right Gate) =================
             {
@@ -843,10 +998,10 @@
                 id: 5,
                 audioFile: "q5.mp3",
                 emoji: "👨‍👩‍👧",
-                prompt: "有事搵家人幫？",
-                ttsScript: "有事搵家人幫手，要定唔要？",
+                prompt: "有事搵爸媽幫？",
+                ttsScript: "有事搵爸媽幫手，要定唔要？",
                 answerIsYes: true,
-                fact: "家人同老師最錫你，有事記得搵佢哋！"
+                fact: "爸媽同老師最錫你，有事記得搵佢哋！"
             },
             {
                 id: 6,
@@ -881,10 +1036,8 @@
             const noPool = kidQuestionBank.filter(q => !q.answerIsYes).sort(() => Math.random() - 0.5);
             const yesPool = kidQuestionBank.filter(q => q.answerIsYes).sort(() => Math.random() - 0.5);
 
-            // Pick 3 "不要" and 2 "要" questions for a balanced 5-question round
             const selected = [...noPool.slice(0, 3), ...yesPool.slice(0, 2)];
 
-            // Shuffle so there are no more than 2 identical answers in a row
             for (let attempt = 0; attempt < 20; attempt++) {
                 selected.sort(() => Math.random() - 0.5);
                 let maxStreak = 1, curStreak = 1;
@@ -902,11 +1055,13 @@
         }
     </script>
 
-    <!-- Core 3D Carnival World & Gameplay Engine -->
+    <!-- Core 3D Carnival World & Pixel-Perfect Safari/Mobile Rendering Engine -->
     <script>
         const TOTAL_QUESTIONS = 5;
-        const BASE_GAME_SPEED = 0.115;
-        const GATE_SPACING = 54;
+        const BASE_GAME_SPEED = 0.118;
+        const GATE_SPACING = 56;
+        // Invisible boundary: > 21 units before gate is the Star/Drug Zone; <= 21 units before gate is the Gate Slowdown Zone!
+        const SLOWDOWN_ZONE_DIST = 21;
         const LEFT_LANE_X = -2.25;
         const RIGHT_LANE_X = 2.25;
         const TRACK_WIDTH = 8.8;
@@ -918,23 +1073,24 @@
         let sessionQuestions = [];
         let spawnedGateCount = 0;
         let currentActiveGateIndex = 0;
-        let hasChosenForCurrentGate = false;
+        let hasChosenInSlowdownZone = false;
         let postGateSlowdownUntil = 0;
 
         let finishLineMesh = null;
         let finishLineZ = null;
         let hasCrossedFinishLine = false;
 
-        // Player State
+        // Player & Fair Scoring State
         let playerX = 0;
         let targetPlayerX = 0;
         let playerZ = 0;
         let playerJumpY = 0;
         let playerJumpVel = 0;
-        let playerLives = 3.0;
-        const maxLives = 3.0;
+        let actionScore = 0;
         let totalScore = 0;
         let passedGatesCount = 0;
+        let starsCollectedCount = 0;
+        let drugsHitCount = 0;
         let comboStreak = 0;
         let gateResults = [];
         let highScore = parseInt(localStorage.getItem('antidrug_carnival_highscore') || '0');
@@ -945,7 +1101,7 @@
         let playerGroup, playerSpriteMesh, playerRingMesh;
         let trackSegments = [];
         let gatePairs = [];
-        let coins = [];
+        let trackItems = [];
         let clouds = [];
         let animatedSpectators = [];
         let particlesGeo, particlesMat, particlesSystem;
@@ -953,6 +1109,121 @@
 
         let leftYesGateTexture = null;
         let rightNoGateTexture = null;
+        let starLabelTexture = null;
+        let drugLabelTexture = null;
+
+        /**
+         * PIXEL-SCANNING BOUNDING-BOX AUTO-FIT ENGINE FOR SAFARI / IOS / MAC / CHROME
+         * Renders text onto an offscreen canvas, scans the exact painted pixels (minX, minY, maxX, maxY),
+         * scales down if needed, and blits the exact visual bounding box dead-center into (boxX, boxY, boxW, boxH).
+         * Guarantees 0% text overflow and 100% visual centering on MacBook Safari, iPad, iPhone, and Chrome!
+         */
+        function drawPixelPerfectTextInBox(targetCtx, text, boxX, boxY, boxW, boxH, options = {}) {
+            const offW = 1600;
+            const offH = 380;
+            const offCanvas = document.createElement('canvas');
+            offCanvas.width = offW;
+            offCanvas.height = offH;
+            const offCtx = offCanvas.getContext('2d');
+
+            const fontStr = options.font || '900 100px "M PLUS Rounded 1c", "PingFang HK", "Heiti TC", "Noto Sans TC", sans-serif';
+            offCtx.font = fontStr;
+            offCtx.textAlign = 'center';
+            offCtx.textBaseline = 'middle';
+
+            const centerX = offW / 2;
+            const centerY = offH / 2;
+
+            if (options.shadowColor) {
+                offCtx.shadowColor = options.shadowColor;
+                offCtx.shadowBlur = options.shadowBlur || 10;
+                offCtx.shadowOffsetX = options.shadowOffsetX || 0;
+                offCtx.shadowOffsetY = options.shadowOffsetY || 3;
+            }
+
+            if (options.strokeStyle && options.lineWidth) {
+                offCtx.strokeStyle = options.strokeStyle;
+                offCtx.lineWidth = options.lineWidth;
+                offCtx.lineJoin = 'round';
+                offCtx.miterLimit = 2;
+                offCtx.strokeText(text, centerX, centerY);
+            }
+
+            offCtx.fillStyle = options.fillStyle || '#ffffff';
+            offCtx.fillText(text, centerX, centerY);
+
+            // Scan actual rendered pixels to find true visual bounding box
+            const imgData = offCtx.getImageData(0, 0, offW, offH).data;
+            let minX = offW, maxX = 0, minY = offH, maxY = 0;
+            let found = false;
+
+            for (let y = 0; y < offH; y += 2) {
+                const rowOffset = y * offW * 4;
+                for (let x = 0; x < offW; x += 2) {
+                    const alpha = imgData[rowOffset + x * 4 + 3];
+                    if (alpha > 18) {
+                        if (x < minX) minX = x;
+                        if (x > maxX) maxX = x;
+                        if (y < minY) minY = y;
+                        if (y > maxY) maxY = y;
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found) return;
+
+            // Add 4px safety padding around detected pixel bounds
+            minX = Math.max(0, minX - 4);
+            minY = Math.max(0, minY - 4);
+            maxX = Math.min(offW - 1, maxX + 4);
+            maxY = Math.min(offH - 1, maxY + 4);
+
+            const actualW = Math.max(1, maxX - minX + 1);
+            const actualH = Math.max(1, maxY - minY + 1);
+
+            // Scale down if visual width or height exceeds target safe box (boxW, boxH)
+            const scale = Math.min(1, boxW / actualW, boxH / actualH);
+            const destW = actualW * scale;
+            const destH = actualH * scale;
+            const destX = boxX + (boxW - destW) / 2;
+            const destY = boxY + (boxH - destH) / 2;
+
+            targetCtx.drawImage(offCanvas, minX, minY, actualW, actualH, destX, destY, destW, destH);
+        }
+
+        // Helper to draw a cute rounded rectangle compatible with all Safari versions
+        function drawRoundedBox(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+            ctx.lineTo(x + r, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+            ctx.lineTo(x, y + r);
+            ctx.quadraticCurveTo(x, y, x + r, y);
+            ctx.closePath();
+        }
+
+        // Dynamic HTML Question Text Auto-Fit so 2D UI text never clips on any phone, iPad, or Safari window
+        function fitQuestionBannerText() {
+            const centerBox = document.getElementById('question-center-box');
+            const titleRow = document.getElementById('question-title-row');
+            const textEl = document.getElementById('question-text');
+            if (!centerBox || !titleRow || !textEl) return;
+
+            const maxFont = window.innerWidth < 480 ? 22 : (window.innerWidth < 768 ? 28 : 34);
+            let fontSize = maxFont;
+            textEl.style.fontSize = fontSize + 'px';
+
+            const availableW = Math.max(120, centerBox.clientWidth - 12);
+            while (titleRow.scrollWidth > availableW && fontSize > 14) {
+                fontSize -= 1;
+                textEl.style.fontSize = fontSize + 'px';
+            }
+        }
 
         function preloadMascotImages(callback) {
             const keys = Object.keys(MASCOT_ASSETS);
@@ -967,7 +1238,11 @@
                     loadedTextures[key].encoding = THREE.sRGBEncoding;
                     loadedCount++;
                     if (loadedCount === keys.length) {
-                        callback();
+                        if (document.fonts && document.fonts.ready) {
+                            document.fonts.ready.then(callback).catch(callback);
+                        } else {
+                            callback();
+                        }
                     }
                 };
                 img.src = MASCOT_ASSETS[key];
@@ -980,7 +1255,7 @@
 
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0x38bdf8);
-            scene.fog = new THREE.FogExp2(0x7dd3fc, 0.009);
+            scene.fog = new THREE.FogExp2(0x7dd3fc, 0.0085);
 
             camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.1, 1000);
             updateCameraForAspect();
@@ -992,7 +1267,7 @@
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             container.appendChild(renderer.domElement);
 
-            const hemiLight = new THREE.HemisphereLight(0xffffff, 0xfef08a, 0.95);
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0xfef08a, 0.98);
             scene.add(hemiLight);
 
             const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
@@ -1004,7 +1279,7 @@
             scene.add(playerGroup);
 
             createParticleSystem();
-            createSkyClouds();
+            createSkyCloudsAndBalloons();
             window.addEventListener('resize', onWindowResize);
         }
 
@@ -1022,8 +1297,11 @@
             camera.updateProjectionMatrix();
         }
 
-        function createSkyClouds() {
-            const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9, transparent: true, opacity: 0.92 });
+        // Cute Fluffy Clouds + Pastel Carnival Balloons in the Sky
+        function createSkyCloudsAndBalloons() {
+            const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9, transparent: true, opacity: 0.94 });
+            const balloonColors = [0xf43f5e, 0xfacc15, 0xa855f7, 0x10b981, 0xf97316];
+
             for (let i = 0; i < 16; i++) {
                 const cloudGroup = new THREE.Group();
                 const puffs = 3 + Math.floor(Math.random() * 3);
@@ -1037,6 +1315,26 @@
                 cloudGroup.position.set(side * (14 + Math.random() * 18), 11 + Math.random() * 8, -i * 22);
                 scene.add(cloudGroup);
                 clouds.push(cloudGroup);
+
+                // Add cute floating carnival hot-air balloon every few clouds
+                if (i % 3 === 0) {
+                    const bGroup = new THREE.Group();
+                    const bColor = balloonColors[(i / 3) % balloonColors.length];
+                    const bGeo = new THREE.SphereGeometry(2.1, 14, 14);
+                    const bMat = new THREE.MeshStandardMaterial({ color: bColor, roughness: 0.4 });
+                    const bMesh = new THREE.Mesh(bGeo, bMat);
+                    bGroup.add(bMesh);
+
+                    const basketGeo = new THREE.CylinderGeometry(0.55, 0.45, 0.65, 8);
+                    const basketMat = new THREE.MeshStandardMaterial({ color: 0xd97706 });
+                    const basket = new THREE.Mesh(basketGeo, basketMat);
+                    basket.position.y = -2.6;
+                    bGroup.add(basket);
+
+                    bGroup.position.set(-side * (16 + Math.random() * 12), 14 + Math.random() * 5, -i * 22 - 10);
+                    scene.add(bGroup);
+                    clouds.push(bGroup);
+                }
             }
         }
 
@@ -1064,7 +1362,7 @@
                 map: loadedTextures.back,
                 transparent: true,
                 alphaTest: 0.05,
-                side: THREE.DoubleSide
+                side: DoubleSide = THREE.DoubleSide
             });
 
             playerSpriteMesh = new THREE.Mesh(planeGeo, planeMat);
@@ -1083,7 +1381,7 @@
             }
             particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             particlesMat = new THREE.PointsMaterial({
-                size: 0.24,
+                size: 0.26,
                 color: 0xfacc15,
                 transparent: true,
                 opacity: 0,
@@ -1112,7 +1410,13 @@
             setTimeout(() => { flash.style.opacity = '0'; }, 180);
         }
 
+        /**
+         * Build Gate Textures & 3D Floating Item Labels Using Pixel-Scanning Bounding-Box Auto-Fit!
+         * Every piece of text is scanned and placed dead-center inside its safe inner box.
+         */
         function buildFixedGateTextures() {
+            const cuteFont = '"M PLUS Rounded 1c", "Fredoka", "PingFang HK", "Heiti TC", "Noto Sans TC", sans-serif';
+
             // 1. LEFT GATE: ⭕ 要！
             const cYes = document.createElement('canvas');
             cYes.width = 800;
@@ -1120,7 +1424,8 @@
             const ctxY = cYes.getContext('2d');
 
             const gradY = ctxY.createLinearGradient(0, 0, 0, 680);
-            gradY.addColorStop(0, '#10b981');
+            gradY.addColorStop(0, '#34d399');
+            gradY.addColorStop(0.55, '#10b981');
             gradY.addColorStop(1, '#047857');
             ctxY.fillStyle = gradY;
             ctxY.fillRect(0, 0, 800, 680);
@@ -1130,24 +1435,31 @@
             ctxY.strokeRect(16, 16, 768, 648);
 
             ctxY.strokeStyle = '#fde047';
-            ctxY.lineWidth = 8;
-            ctxY.strokeRect(34, 34, 732, 612);
+            ctxY.lineWidth = 10;
+            ctxY.strokeRect(36, 36, 728, 608);
 
             if (loadedImages.yes) {
-                ctxY.drawImage(loadedImages.yes, 225, 36, 350, 370);
+                ctxY.drawImage(loadedImages.yes, 235, 36, 330, 345);
             }
 
-            ctxY.fillStyle = '#ffffff';
-            ctxY.textAlign = 'center';
-            ctxY.textBaseline = 'middle';
-            ctxY.shadowColor = 'rgba(0, 0, 0, 0.55)';
-            ctxY.shadowBlur = 14;
-            ctxY.font = '900 138px "Noto Sans TC", sans-serif';
-            ctxY.fillText('⭕ 要！', 400, 505);
+            // Main Title inside safe box (x: 75..725, y: 395..525)
+            drawPixelPerfectTextInBox(ctxY, '⭕ 要！', 75, 395, 650, 128, {
+                font: `900 130px ${cuteFont}`,
+                fillStyle: '#ffffff',
+                strokeStyle: '#064e3b',
+                lineWidth: 16,
+                shadowColor: 'rgba(0,0,0,0.35)',
+                shadowBlur: 10
+            });
 
-            ctxY.fillStyle = '#fef08a';
-            ctxY.font = '900 52px "Noto Sans TC", sans-serif';
-            ctxY.fillText('👍 好行為', 400, 610);
+            // Subtitle Pill Badge at bottom of Gate (x: 110..690, y: 542..620)
+            ctxY.fillStyle = 'rgba(6, 78, 59, 0.55)';
+            drawRoundedBox(ctxY, 110, 542, 580, 76, 38);
+            ctxY.fill();
+            drawPixelPerfectTextInBox(ctxY, '👍 正確好行為', 140, 550, 520, 60, {
+                font: `900 52px ${cuteFont}`,
+                fillStyle: '#fef08a'
+            });
 
             leftYesGateTexture = new THREE.CanvasTexture(cYes);
             leftYesGateTexture.needsUpdate = true;
@@ -1159,7 +1471,8 @@
             const ctxN = cNo.getContext('2d');
 
             const gradN = ctxN.createLinearGradient(0, 0, 0, 680);
-            gradN.addColorStop(0, '#ef4444');
+            gradN.addColorStop(0, '#fb7185');
+            gradN.addColorStop(0.55, '#ef4444');
             gradN.addColorStop(1, '#b91c1c');
             ctxN.fillStyle = gradN;
             ctxN.fillRect(0, 0, 800, 680);
@@ -1169,27 +1482,77 @@
             ctxN.strokeRect(16, 16, 768, 648);
 
             ctxN.strokeStyle = '#fde047';
-            ctxN.lineWidth = 8;
-            ctxN.strokeRect(34, 34, 732, 612);
+            ctxN.lineWidth = 10;
+            ctxN.strokeRect(36, 36, 728, 608);
 
             if (loadedImages.no) {
-                ctxN.drawImage(loadedImages.no, 225, 36, 350, 370);
+                ctxN.drawImage(loadedImages.no, 235, 36, 330, 345);
             }
 
-            ctxN.fillStyle = '#ffffff';
-            ctxN.textAlign = 'center';
-            ctxN.textBaseline = 'middle';
-            ctxN.shadowColor = 'rgba(0, 0, 0, 0.55)';
-            ctxN.shadowBlur = 14;
-            ctxN.font = '900 130px "Noto Sans TC", sans-serif';
-            ctxN.fillText('❌ 不要！', 400, 505);
+            // Main Title inside safe box (x: 75..725, y: 395..525)
+            drawPixelPerfectTextInBox(ctxN, '❌ 不要！', 75, 395, 650, 128, {
+                font: `900 125px ${cuteFont}`,
+                fillStyle: '#ffffff',
+                strokeStyle: '#7f1d1d',
+                lineWidth: 16,
+                shadowColor: 'rgba(0,0,0,0.35)',
+                shadowBlur: 10
+            });
 
-            ctxN.fillStyle = '#fef08a';
-            ctxN.font = '900 50px "Noto Sans TC", sans-serif';
-            ctxN.fillText('🙅‍♂️ 唔好試 DO NOT', 400, 610);
+            // Subtitle Pill Badge at bottom of Gate (x: 95..705, y: 542..620)
+            ctxN.fillStyle = 'rgba(127, 29, 29, 0.58)';
+            drawRoundedBox(ctxN, 95, 542, 610, 76, 38);
+            ctxN.fill();
+            // Pixel-scanned and auto-fitted inside (130, 550, 540, 60) -> Never overflows on Safari!
+            drawPixelPerfectTextInBox(ctxN, '🚫 唔好試 DO NOT', 130, 550, 540, 60, {
+                font: `900 50px ${cuteFont}`,
+                fillStyle: '#fef08a'
+            });
 
             rightNoGateTexture = new THREE.CanvasTexture(cNo);
             rightNoGateTexture.needsUpdate = true;
+
+            // 3. Cute 3D Floating Label for Star (+300)
+            const cStar = document.createElement('canvas');
+            cStar.width = 520;
+            cStar.height = 150;
+            const ctxS = cStar.getContext('2d');
+            ctxS.fillStyle = '#10b981';
+            drawRoundedBox(ctxS, 12, 12, 496, 126, 63);
+            ctxS.fill();
+            ctxS.lineWidth = 12;
+            ctxS.strokeStyle = '#fef08a';
+            ctxS.stroke();
+            // Safe inner box: x=64..456 (width 392), y=32..118 (height 86) -> 100% inside rounded pill!
+            drawPixelPerfectTextInBox(ctxS, '★ 星星 +300', 64, 32, 392, 86, {
+                font: `900 68px ${cuteFont}`,
+                fillStyle: '#ffffff',
+                strokeStyle: '#065f46',
+                lineWidth: 10
+            });
+            starLabelTexture = new THREE.CanvasTexture(cStar);
+            starLabelTexture.needsUpdate = true;
+
+            // 4. Cute 3D Floating Label for Drug (-300)
+            const cDrug = document.createElement('canvas');
+            cDrug.width = 520;
+            cDrug.height = 150;
+            const ctxD = cDrug.getContext('2d');
+            ctxD.fillStyle = '#e11d48';
+            drawRoundedBox(ctxD, 12, 12, 496, 126, 63);
+            ctxD.fill();
+            ctxD.lineWidth = 12;
+            ctxD.strokeStyle = '#ffffff';
+            ctxD.stroke();
+            // Safe inner box: x=64..456 (width 392), y=32..118 (height 86) -> Never touches rounded pill edges on Safari!
+            drawPixelPerfectTextInBox(ctxD, '✕ 毒品 -300', 64, 32, 392, 86, {
+                font: `900 68px ${cuteFont}`,
+                fillStyle: '#fef08a',
+                strokeStyle: '#881337',
+                lineWidth: 10
+            });
+            drugLabelTexture = new THREE.CanvasTexture(cDrug);
+            drugLabelTexture.needsUpdate = true;
         }
 
         function createTrackSegment(zPos) {
@@ -1212,26 +1575,26 @@
             group.add(leftLane);
 
             const rightLaneGeo = new THREE.PlaneGeometry(TRACK_WIDTH / 2, 100);
-            const rightLaneMat = new THREE.MeshStandardMaterial({ color: 0x1d4ed8, roughness: 0.5 });
+            const rightLaneMat = new THREE.MeshStandardMaterial({ color: 0x2563eb, roughness: 0.5 });
             const rightLane = new THREE.Mesh(rightLaneGeo, rightLaneMat);
             rightLane.rotation.x = -Math.PI / 2;
             rightLane.position.x = TRACK_WIDTH / 4;
             rightLane.receiveShadow = true;
             group.add(rightLane);
 
-            const railGeo = new THREE.BoxGeometry(0.4, 0.42, 100);
+            const railGeo = new THREE.BoxGeometry(0.42, 0.44, 100);
             const leftRailMat = new THREE.MeshStandardMaterial({ color: 0x10b981, emissive: 0x059669, emissiveIntensity: 0.35 });
             const rightRailMat = new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xb91c1c, emissiveIntensity: 0.35 });
 
             const leftRail = new THREE.Mesh(railGeo, leftRailMat);
-            leftRail.position.set(-TRACK_WIDTH / 2 - 0.2, 0.21, 0);
+            leftRail.position.set(-TRACK_WIDTH / 2 - 0.2, 0.22, 0);
             group.add(leftRail);
 
             const rightRail = new THREE.Mesh(railGeo, rightRailMat);
-            rightRail.position.set(TRACK_WIDTH / 2 + 0.2, 0.21, 0);
+            rightRail.position.set(TRACK_WIDTH / 2 + 0.2, 0.22, 0);
             group.add(rightRail);
 
-            const lineGeo = new THREE.PlaneGeometry(0.22, 4.5);
+            const lineGeo = new THREE.PlaneGeometry(0.24, 4.5);
             const lineMat = new THREE.MeshBasicMaterial({ color: 0xfef08a });
             for (let z = -45; z < 50; z += 10) {
                 const centerDash = new THREE.Mesh(lineGeo, lineMat);
@@ -1280,43 +1643,39 @@
             trackSegments.push(group);
         }
 
+        // Pixel-Perfect 3D Question Arch Banner
         function create3DQuestionArchBanner(qData, questionNumber) {
+            const cuteFont = '"M PLUS Rounded 1c", "Fredoka", "PingFang HK", "Heiti TC", "Noto Sans TC", sans-serif';
             const canvas = document.createElement('canvas');
             canvas.width = 1400;
             canvas.height = 300;
             const ctx = canvas.getContext('2d');
 
             ctx.fillStyle = '#ffffff';
-            ctx.fillRect(14, 14, 1372, 272);
+            drawRoundedBox(ctx, 16, 16, 1368, 268, 55);
+            ctx.fill();
 
             ctx.strokeStyle = '#facc15';
             ctx.lineWidth = 22;
-            ctx.strokeRect(14, 14, 1372, 272);
+            ctx.stroke();
 
             ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 6;
-            ctx.strokeRect(32, 32, 1336, 236);
+            ctx.lineWidth = 8;
+            drawRoundedBox(ctx, 36, 36, 1328, 228, 40);
+            ctx.stroke();
 
             const fullText = `第 ${questionNumber} 關：${qData.emoji} ${qData.prompt}`;
-            const maxAllowedWidth = 1240;
-
-            let fontSize = 84;
-            ctx.font = `900 ${fontSize}px "Noto Sans TC", sans-serif`;
-            while (ctx.measureText(fullText).width > maxAllowedWidth && fontSize > 44) {
-                fontSize -= 4;
-                ctx.font = `900 ${fontSize}px "Noto Sans TC", sans-serif`;
-            }
-
-            ctx.fillStyle = '#0f172a';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(fullText, 700, 152, maxAllowedWidth);
+            // Pixel-scanned and auto-fitted inside safe inner box (90, 52, 1220, 196)
+            drawPixelPerfectTextInBox(ctx, fullText, 90, 52, 1220, 196, {
+                font: `900 86px ${cuteFont}`,
+                fillStyle: '#0f172a'
+            });
 
             const tex = new THREE.CanvasTexture(canvas);
             tex.needsUpdate = true;
 
             const geo = new THREE.PlaneGeometry(9.6, 2.06);
-            const mat = new THREE.MeshBasicMaterial({ map: tex, side: THREE.FrontSide });
+            const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, side: THREE.FrontSide });
             const mesh = new THREE.Mesh(geo, mat);
             mesh.position.set(0, 4.95, 0);
             return mesh;
@@ -1364,6 +1723,7 @@
         }
 
         function spawnFinishLine(zPos) {
+            const cuteFont = '"M PLUS Rounded 1c", "Fredoka", "PingFang HK", "Heiti TC", "Noto Sans TC", sans-serif';
             finishLineZ = zPos;
             const archGroup = new THREE.Group();
             archGroup.position.z = zPos;
@@ -1401,20 +1761,20 @@
             canvas.height = 256;
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#facc15';
-            ctx.fillRect(0, 0, 1024, 256);
+            drawRoundedBox(ctx, 12, 12, 1000, 232, 48);
+            ctx.fill();
             ctx.strokeStyle = '#ffffff';
             ctx.lineWidth = 16;
-            ctx.strokeRect(10, 10, 1004, 236);
+            ctx.stroke();
 
-            ctx.fillStyle = '#0f172a';
-            ctx.font = '900 84px "Noto Sans TC", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText("🏁 終點過關！ 🏁", 512, 128, 940);
+            drawPixelPerfectTextInBox(ctx, "🏁 終點過關！ 🏁", 80, 44, 864, 168, {
+                font: `900 84px ${cuteFont}`,
+                fillStyle: '#0f172a'
+            });
 
             const bannerTex = new THREE.CanvasTexture(canvas);
             const textPlaneGeo = new THREE.PlaneGeometry(TRACK_WIDTH + 1.4, 2.2);
-            const textPlaneMat = new THREE.MeshBasicMaterial({ map: bannerTex });
+            const textPlaneMat = new THREE.MeshBasicMaterial({ map: bannerTex, transparent: true });
             const textPlane = new THREE.Mesh(textPlaneGeo, textPlaneMat);
             textPlane.position.set(0, 5.8, 0);
             archGroup.add(textPlane);
@@ -1423,32 +1783,76 @@
             finishLineMesh = archGroup;
         }
 
-        function spawnCoins(zPos) {
-            const coinGroup = new THREE.Group();
-            coinGroup.position.z = zPos;
-            const coinX = Math.random() > 0.5 ? LEFT_LANE_X : RIGHT_LANE_X;
+        /**
+         * Spawn EITHER a Golden Star (+300) OR a Poison Drug Trap (-300) Randomly,
+         * and place it Randomly on EITHER the Left Lane OR the Right Lane!
+         */
+        function spawnRandomStarOrDrugItem(zCenter) {
+            const isStar = Math.random() < 0.5;
+            const itemLaneX = Math.random() < 0.5 ? LEFT_LANE_X : RIGHT_LANE_X;
 
-            const starGeo = new THREE.OctahedronGeometry(0.5);
-            const starMat = new THREE.MeshStandardMaterial({
-                color: 0xfacc15,
-                metalness: 0.6,
-                roughness: 0.2,
-                emissive: 0xf59e0b,
-                emissiveIntensity: 0.5
-            });
-            const star = new THREE.Mesh(starGeo, starMat);
-            star.position.set(coinX, 1.0, 0);
-            coinGroup.add(star);
-            coinGroup.userData = { collected: false };
-            scene.add(coinGroup);
-            coins.push(coinGroup);
+            if (isStar) {
+                // Spawn Golden Star (+300)
+                const starGroup = new THREE.Group();
+                starGroup.position.set(itemLaneX, 0, zCenter);
+
+                const starGeo = new THREE.OctahedronGeometry(0.62, 0);
+                const starMat = new THREE.MeshStandardMaterial({
+                    color: 0xfacc15,
+                    metalness: 0.6,
+                    roughness: 0.2,
+                    emissive: 0xf59e0b,
+                    emissiveIntensity: 0.55
+                });
+                const starMesh = new THREE.Mesh(starGeo, starMat);
+                starMesh.position.y = 1.05;
+                starGroup.add(starMesh);
+
+                if (starLabelTexture) {
+                    const labelGeo = new THREE.PlaneGeometry(2.5, 0.72);
+                    const labelMat = new THREE.MeshBasicMaterial({ map: starLabelTexture, transparent: true });
+                    const labelMesh = new THREE.Mesh(labelGeo, labelMat);
+                    labelMesh.position.y = 2.15;
+                    starGroup.add(labelMesh);
+                }
+
+                starGroup.userData = { collected: false, type: 'star', rotMesh: starMesh };
+                scene.add(starGroup);
+                trackItems.push(starGroup);
+            } else {
+                // Spawn Poison Drug Trap (-300)
+                const drugGroup = new THREE.Group();
+                drugGroup.position.set(itemLaneX, 0, zCenter);
+
+                const drugCoreGeo = new THREE.DodecahedronGeometry(0.58, 0);
+                const drugCoreMat = new THREE.MeshStandardMaterial({
+                    color: 0x9333ea,
+                    roughness: 0.3,
+                    emissive: 0xe11d48,
+                    emissiveIntensity: 0.65
+                });
+                const drugMesh = new THREE.Mesh(drugCoreGeo, drugCoreMat);
+                drugMesh.position.y = 1.05;
+                drugGroup.add(drugMesh);
+
+                if (drugLabelTexture) {
+                    const dLabelGeo = new THREE.PlaneGeometry(2.5, 0.72);
+                    const dLabelMat = new THREE.MeshBasicMaterial({ map: drugLabelTexture, transparent: true });
+                    const dLabelMesh = new THREE.Mesh(dLabelGeo, dLabelMat);
+                    dLabelMesh.position.y = 2.15;
+                    drugGroup.add(dLabelMesh);
+                }
+
+                drugGroup.userData = { collected: false, type: 'drug', rotMesh: drugMesh };
+                scene.add(drugGroup);
+                trackItems.push(drugGroup);
+            }
         }
 
-        // Update 2D Top Question Card & Play Custom Question MP3 (q1.mp3 ~ q8.mp3) with BGM Auto-Ducking
         function presentActiveQuestion(index) {
             if (index >= TOTAL_QUESTIONS) return;
             currentActiveGateIndex = index;
-            hasChosenForCurrentGate = false;
+            hasChosenInSlowdownZone = false;
             updateButtonSelectionVisuals(0);
 
             const qData = sessionQuestions[index];
@@ -1458,13 +1862,16 @@
             const cardEl = document.getElementById('question-card');
             const hintEl = document.getElementById('thinking-hint');
 
-            if (badgeEl) badgeEl.innerText = `第 ${index + 1}/${TOTAL_QUESTIONS} 關`;
+            if (badgeEl) badgeEl.innerText = `🎈 第 ${index + 1}/${TOTAL_QUESTIONS} 關`;
             if (emojiEl) emojiEl.innerText = qData.emoji;
             if (textEl) textEl.innerText = qData.prompt;
             if (hintEl) {
-                hintEl.className = "text-xs sm:text-sm font-black text-amber-600 mt-0.5 flex items-center justify-center gap-1 flex-wrap";
-                hintEl.innerHTML = `<span>👇 拍下面</span><span class="text-emerald-600 font-black">【⭕ 要！】</span><span>定係</span><span class="text-rose-600 font-black">【❌ 不要！】</span>`;
+                hintEl.className = "text-[11px] sm:text-sm font-black text-amber-700 mt-0.5 flex items-center justify-center gap-1 whitespace-nowrap bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-300";
+                hintEl.innerHTML = `<span>👇 拍下面</span><span class="text-emerald-600 font-black">【⭕ 要！】</span><span>定</span><span class="text-rose-600 font-black">【❌ 不要！】</span>`;
             }
+
+            // Ensure HTML Question Text fits 100% inside the card on Safari & Phone
+            fitQuestionBannerText();
 
             if (cardEl) {
                 cardEl.classList.remove('animate-question-pop');
@@ -1472,7 +1879,6 @@
                 cardEl.classList.add('animate-question-pop');
             }
 
-            // Play the recorded MP3 for this question (q1.mp3 ~ q8.mp3) and automatically duck bgm.mp3!
             soundFx.playQuestionMP3(qData.audioFile);
         }
 
@@ -1496,22 +1902,25 @@
             container.innerHTML = html;
         }
 
-        function showFloatingScorePopup(text, isCombo = false) {
+        function showFloatingScorePopup(text, styleType = 'star') {
             const container = document.getElementById('score-popups-container');
             if (!container) return;
             const el = document.createElement('div');
-            el.className = isCombo
-                ? 'absolute text-emerald-700 font-black text-xl sm:text-3xl animate-score-popup flex items-center gap-2 bg-white/95 px-4 py-2 rounded-2xl border-4 border-emerald-400 shadow-xl'
-                : 'absolute text-amber-400 font-black text-xl sm:text-2xl drop-shadow-[0_3px_6px_rgba(0,0,0,0.5)] animate-score-popup flex items-center gap-1.5 bg-slate-900/90 px-3.5 py-1 rounded-full border-2 border-amber-400';
-
-            el.innerHTML = isCombo
-                ? `<i class="fa-solid fa-bolt text-amber-500"></i> ${text}`
-                : `<i class="fa-solid fa-star text-amber-400"></i> ${text}`;
+            if (styleType === 'combo') {
+                el.className = 'absolute text-emerald-700 font-black text-lg sm:text-3xl animate-score-popup flex items-center gap-2 bg-white/95 px-4 py-2 rounded-2xl border-4 border-emerald-400 shadow-xl whitespace-nowrap';
+                el.innerHTML = `<i class="fa-solid fa-bolt text-amber-500"></i> ${text}`;
+            } else if (styleType === 'drug') {
+                el.className = 'absolute text-white font-black text-lg sm:text-2xl animate-score-popup flex items-center gap-1.5 bg-rose-600/95 px-4 py-1.5 rounded-full border-2 border-white shadow-xl whitespace-nowrap';
+                el.innerHTML = `<i class="fa-solid fa-skull-crossbones text-amber-200"></i> ${text}`;
+            } else {
+                el.className = 'absolute text-amber-300 font-black text-lg sm:text-2xl drop-shadow-[0_3px_6px_rgba(0,0,0,0.5)] animate-score-popup flex items-center gap-1.5 bg-slate-900/90 px-3.5 py-1.5 rounded-full border-2 border-amber-400 whitespace-nowrap';
+                el.innerHTML = `<i class="fa-solid fa-star text-amber-400"></i> ${text}`;
+            }
 
             container.appendChild(el);
             setTimeout(() => {
                 if (container.contains(el)) container.removeChild(el);
-            }, 900);
+            }, 950);
         }
 
         let reactionTimer = null;
@@ -1531,13 +1940,13 @@
             void card.offsetWidth;
 
             if (isCorrect) {
-                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-3xl border-4 border-emerald-500 shadow-2xl flex items-center gap-3.5 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
-                titleEl.className = "text-base sm:text-xl font-black text-emerald-600 flex items-center gap-1.5 mb-1";
+                card.className = "px-3.5 py-2.5 sm:px-6 sm:py-4 rounded-[2rem] border-4 border-emerald-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
+                titleEl.className = "text-sm sm:text-xl font-black text-emerald-600 flex items-center gap-1.5 mb-0.5";
                 titleEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> 答啱啦！好叻呀！ (+200分)`;
             } else {
-                card.className = "px-4 py-3 sm:px-6 sm:py-4 rounded-3xl border-4 border-rose-500 shadow-2xl flex items-center gap-3.5 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
-                titleEl.className = "text-base sm:text-xl font-black text-rose-600 flex items-center gap-1.5 mb-1";
-                titleEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> 記住呀：`;
+                card.className = "px-3.5 py-2.5 sm:px-6 sm:py-4 rounded-[2rem] border-4 border-rose-500 shadow-2xl flex items-center gap-3 max-w-lg w-full mx-auto bg-white/95 backdrop-blur-md animate-feedback-toast";
+                titleEl.className = "text-sm sm:text-xl font-black text-rose-600 flex items-center gap-1.5 mb-0.5";
+                titleEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> 小朋友記住呀：`;
             }
 
             descEl.innerText = factText;
@@ -1548,45 +1957,23 @@
             }, 4600);
         }
 
-        function getHeartSVG(type) {
-            if (type === 'full') {
-                return `<svg class="w-4 h-4 sm:w-5 sm:h-5 text-rose-500 drop-shadow" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-            } else if (type === 'half') {
-                return `<svg class="w-4 h-4 sm:w-5 sm:h-5 drop-shadow" viewBox="0 0 24 24"><defs><linearGradient id="halfHeartGrad"><stop offset="50%" stop-color="#f43f5e"/><stop offset="50%" stop-color="#475569"/></linearGradient></defs><path fill="url(#halfHeartGrad)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-            } else {
-                return `<svg class="w-4 h-4 sm:w-5 sm:h-5 text-slate-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-            }
-        }
-
-        function updateHeartsDisplay() {
-            const container = document.getElementById('hud-hearts');
-            if (!container) return;
-            let html = '';
-            for (let i = 1; i <= 3; i++) {
-                if (playerLives >= i) {
-                    html += getHeartSVG('full');
-                } else if (playerLives >= i - 0.5) {
-                    html += getHeartSVG('half');
-                } else {
-                    html += getHeartSVG('empty');
-                }
-            }
-            container.innerHTML = html;
-        }
-
         function initPlayerModel() {
             while (playerGroup.children.length > 0) {
                 playerGroup.remove(playerGroup.children[0]);
             }
             const mascotRunner = create3DMascotRunner();
             playerGroup.add(mascotRunner);
-            updateHeartsDisplay();
         }
 
         function onWindowResize() {
             if (!camera || !renderer) return;
             updateCameraForAspect();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            fitQuestionBannerText();
+            if (confettiFx && confettiFx.active && confettiFx.canvas) {
+                confettiFx.canvas.width = window.innerWidth;
+                confettiFx.canvas.height = window.innerHeight;
+            }
         }
 
         function selectLane(direction) {
@@ -1600,7 +1987,16 @@
                 targetPlayerX = RIGHT_LANE_X;
                 updateButtonSelectionVisuals(1);
             }
-            hasChosenForCurrentGate = true;
+
+            // Only cancel the Gate Slowdown if the player taps Left/Right INSIDE the Gate Slowdown Zone!
+            const activeGate = gatePairs.find(g => !g.userData.passed);
+            if (activeGate) {
+                const absDist = Math.abs(activeGate.position.z - playerZ);
+                if (absDist <= SLOWDOWN_ZONE_DIST) {
+                    hasChosenInSlowdownZone = true;
+                }
+            }
+
             soundFx.playLaneSwitch();
         }
 
@@ -1624,6 +2020,7 @@
         }
 
         function checkCollisions() {
+            // 1. Gate Collisions
             gatePairs.forEach(pair => {
                 if (!pair.userData.passed && Math.abs(playerZ - pair.position.z) < 1.35) {
                     pair.userData.passed = true;
@@ -1634,46 +2031,40 @@
                     const isCorrect = (choseYes === qData.answerIsYes);
 
                     gateResults.push(isCorrect);
-
                     postGateSlowdownUntil = Date.now() + 1800;
 
                     if (isCorrect) {
-                        playerLives = Math.min(maxLives, playerLives + 0.5);
                         comboStreak++;
                         const comboBonus = comboStreak > 1 ? comboStreak * 50 : 0;
-                        totalScore += 200 + comboBonus;
+                        actionScore += 200 + comboBonus;
                         passedGatesCount++;
                         playerJumpVel = 0.22;
 
-                        // Play distinct Correct Chime Sound Effect!
                         soundFx.playGatePositive();
                         triggerParticleBurst(triggerX, 1.8, playerZ, 0x34d399);
                         triggerMascotReaction(true, qData.fact);
 
                         if (comboStreak >= 2) {
-                            showFloatingScorePopup(`${comboStreak} 連勝！+${200 + comboBonus}`, true);
+                            showFloatingScorePopup(`${comboStreak} 連勝！+${200 + comboBonus}`, 'combo');
                         } else {
-                            showFloatingScorePopup(`+200 答啱！`, false);
+                            showFloatingScorePopup(`+200 答啱！`, 'star');
                         }
                     } else {
-                        playerLives = Math.max(0.5, playerLives - 1.0);
                         comboStreak = 0;
-
-                        // Play distinct Wrong Buzzer Sound Effect!
                         soundFx.playGateNegative();
                         triggerDamageFlash();
                         triggerParticleBurst(triggerX, 1.8, playerZ, 0xf43f5e);
                         triggerMascotReaction(false, qData.fact);
                     }
 
-                    updateHeartsDisplay();
                     updateStarsHUD();
 
-                    // Spawn next gate & play next question MP3
+                    // Spawn next gate & 1 Random Star OR Drug item in the Star/Drug Zone
                     if (spawnedGateCount < TOTAL_QUESTIONS) {
                         const nextZ = pair.position.z - GATE_SPACING;
                         spawnGatePair(nextZ);
-                        spawnCoins(nextZ + GATE_SPACING * 0.5);
+                        // Spawn 1 random item at nextZ + 31 (well inside the Star/Drug Zone > 21 units before next gate!)
+                        spawnRandomStarOrDrugItem(nextZ + 31);
                         const nextIdx = pair.userData.index;
                         setTimeout(() => {
                             if (isPlaying) {
@@ -1685,20 +2076,33 @@
                 }
             });
 
-            coins.forEach(cGroup => {
-                if (!cGroup.userData.collected && Math.abs(playerZ - cGroup.position.z) < 1.6) {
-                    const coinX = cGroup.children[0].position.x;
-                    if (Math.abs(playerX - coinX) < 1.6) {
-                        cGroup.userData.collected = true;
-                        scene.remove(cGroup);
-                        totalScore += 100;
-                        soundFx.playCoin();
-                        triggerParticleBurst(playerX, 1.0, playerZ, 0xfacc15);
-                        showFloatingScorePopup("+100 分！");
+            // 2. Random Star (+300) or Drug (-300) Collision
+            trackItems.forEach(itemGroup => {
+                if (!itemGroup.userData.collected && Math.abs(playerZ - itemGroup.position.z) < 1.55) {
+                    if (Math.abs(playerX - itemGroup.position.x) < 1.55) {
+                        itemGroup.userData.collected = true;
+                        scene.remove(itemGroup);
+
+                        if (itemGroup.userData.type === 'star') {
+                            actionScore += 300;
+                            starsCollectedCount++;
+                            playerJumpVel = 0.16;
+                            soundFx.playStarCollect();
+                            triggerParticleBurst(playerX, 1.2, playerZ, 0xfacc15);
+                            showFloatingScorePopup("⭐ 星星 +300分！", 'star');
+                        } else {
+                            actionScore -= 300;
+                            drugsHitCount++;
+                            soundFx.playDrugHit();
+                            triggerDamageFlash();
+                            triggerParticleBurst(playerX, 1.2, playerZ, 0xdc2626);
+                            showFloatingScorePopup("☠️ 掂到毒品 -300分！", 'drug');
+                        }
                     }
                 }
             });
 
+            // 3. Finish Line Crossing
             if (finishLineZ !== null && !hasCrossedFinishLine && playerZ <= finishLineZ) {
                 hasCrossedFinishLine = true;
                 soundFx.playVictory();
@@ -1723,22 +2127,27 @@
                 const distToGate = activeGate.position.z - playerZ;
                 const absDist = Math.abs(distToGate);
 
-                if (!hasChosenForCurrentGate && absDist < 20 && absDist > 1.5) {
-                    currentSpeed = BASE_GAME_SPEED * 0.36;
-                    if (hintEl && !hintEl.classList.contains('animate-pulse-hint')) {
-                        hintEl.classList.add('animate-pulse-hint');
-                        hintEl.innerHTML = `<span class="text-rose-600 font-black">⏰ 諗一諗：拍下面【⭕ 要！】定【❌ 不要！】？</span>`;
-                    }
-                } else if (hasChosenForCurrentGate) {
-                    currentSpeed = BASE_GAME_SPEED * 1.22;
-                    if (hintEl && hintEl.classList.contains('animate-pulse-hint')) {
-                        hintEl.classList.remove('animate-pulse-hint');
+                if (absDist <= SLOWDOWN_ZONE_DIST && absDist > 1.4) {
+                    if (!hasChosenInSlowdownZone) {
+                        currentSpeed = BASE_GAME_SPEED * 0.36;
+                        if (hintEl && !hintEl.classList.contains('animate-pulse-hint')) {
+                            hintEl.classList.add('animate-pulse-hint');
+                            hintEl.innerHTML = `<span class="text-rose-600 font-black">⏰ 請揀跑道：【⭕ 要！】定【❌ 不要！】</span>`;
+                        }
+                    } else {
+                        currentSpeed = BASE_GAME_SPEED * 1.25;
+                        if (hintEl && hintEl.classList.contains('animate-pulse-hint')) {
+                            hintEl.classList.remove('animate-pulse-hint');
+                        }
                     }
                 }
             }
 
             playerZ -= currentSpeed;
-            totalScore += 1;
+
+            // Fair Distance-Based + Action-Based Scoring
+            const distanceScore = Math.floor(Math.abs(playerZ) * 2);
+            totalScore = Math.max(0, distanceScore + actionScore);
 
             const prevX = playerX;
             playerX += (targetPlayerX - playerX) * 0.24;
@@ -1762,9 +2171,9 @@
                 playerSpriteMesh.rotation.z = -velocityX * 0.85 + Math.sin(time * 2.2) * 0.04;
             }
 
-            coins.forEach(cGroup => {
-                if (cGroup.children.length > 0) {
-                    cGroup.children[0].rotation.y += 0.05;
+            trackItems.forEach(itemGroup => {
+                if (itemGroup.userData.rotMesh) {
+                    itemGroup.userData.rotMesh.rotation.y += 0.05;
                 }
             });
 
@@ -1799,7 +2208,6 @@
             renderer.render(scene, camera);
         }
 
-        // Sync all 3 BGM volume sliders & labels (Start Screen, HUD Bar, Pause Modal)
         function syncBgmSlidersUI() {
             const pct = soundFx.bgmMuted ? 0 : Math.round(soundFx.bgmUserVolume * 100);
             const sStart = document.getElementById('slider-bgm-start');
@@ -1880,7 +2288,6 @@
                 }
             });
 
-            // Replay active question MP3 when clicking the Question Card or Replay button
             const replayVoiceHandler = (e) => {
                 e.stopPropagation();
                 soundFx.initAudio();
@@ -1891,7 +2298,6 @@
             document.getElementById('btn-replay-voice').addEventListener('click', replayVoiceHandler);
             document.getElementById('question-card').addEventListener('click', replayVoiceHandler);
 
-            // Toggle Question Voice Readout On/Off
             document.getElementById('btn-voice-toggle').addEventListener('click', (e) => {
                 e.stopPropagation();
                 soundFx.voiceEnabled = !soundFx.voiceEnabled;
@@ -1899,21 +2305,20 @@
                 const text = document.getElementById('text-voice');
                 const btn = document.getElementById('btn-voice-toggle');
                 if (soundFx.voiceEnabled) {
-                    icon.className = 'fa-solid fa-volume-high text-sm';
+                    icon.className = 'fa-solid fa-volume-high text-xs sm:text-sm';
                     text.innerText = '讀題：開';
-                    btn.className = 'btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
+                    btn.className = 'btn-bounce bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-white flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
                     if (sessionQuestions[currentActiveGateIndex]) {
                         soundFx.playQuestionMP3(sessionQuestions[currentActiveGateIndex].audioFile);
                     }
                 } else {
                     soundFx.stopQuestionVoice();
-                    icon.className = 'fa-solid fa-volume-xmark text-sm';
+                    icon.className = 'fa-solid fa-volume-xmark text-xs sm:text-sm';
                     text.innerText = '讀題：關';
-                    btn.className = 'btn-bounce bg-slate-700 hover:bg-slate-600 text-slate-200 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-slate-400 flex items-center justify-center h-9 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
+                    btn.className = 'btn-bounce bg-slate-700 hover:bg-slate-600 text-slate-200 font-black px-2 sm:px-3 rounded-2xl shadow-lg border-2 border-slate-400 flex items-center justify-center h-8 sm:h-10 gap-1 text-xs sm:text-sm whitespace-nowrap';
                 }
             });
 
-            // Independent BGM Volume Sliders Bindings
             const handleBgmSliderInput = (e) => {
                 e.stopPropagation();
                 const val = parseInt(e.target.value, 10) / 100;
@@ -1939,6 +2344,7 @@
         }
 
         function startGame() {
+            if (confettiFx) confettiFx.stop();
             soundFx.initAudio();
             soundFx.startBGM();
 
@@ -1949,13 +2355,15 @@
             playerZ = 0;
             playerJumpY = 0;
             playerJumpVel = 0;
-            playerLives = 3.0;
+            actionScore = 0;
             totalScore = 0;
             passedGatesCount = 0;
+            starsCollectedCount = 0;
+            drugsHitCount = 0;
             comboStreak = 0;
             spawnedGateCount = 0;
             currentActiveGateIndex = 0;
-            hasChosenForCurrentGate = false;
+            hasChosenInSlowdownZone = false;
             postGateSlowdownUntil = 0;
             gateResults = [];
             finishLineZ = null;
@@ -1966,7 +2374,7 @@
 
             trackSegments.forEach(s => scene.remove(s));
             gatePairs.forEach(g => scene.remove(g));
-            coins.forEach(c => scene.remove(c));
+            trackItems.forEach(c => scene.remove(c));
             animatedSpectators = [];
             if (finishLineMesh) {
                 scene.remove(finishLineMesh);
@@ -1975,18 +2383,17 @@
 
             trackSegments = [];
             gatePairs = [];
-            coins = [];
+            trackItems = [];
 
             createTrackSegment(0);
             createTrackSegment(-100);
             createTrackSegment(-200);
 
-            spawnGatePair(-48);
-            spawnCoins(-24);
+            // Spawn Gate 1 at -50, and 1 Random Star OR Drug item at -23 (in the Star/Drug Zone!)
+            spawnGatePair(-50);
+            spawnRandomStarOrDrugItem(-23);
 
             initPlayerModel();
-            presentActiveQuestion(0);
-            updateStarsHUD();
 
             if (reactionTimer) clearTimeout(reactionTimer);
             document.getElementById('mascot-reaction-container').classList.add('hidden');
@@ -1995,6 +2402,9 @@
             document.getElementById('screen-gameover').classList.add('hidden');
             document.getElementById('hud').classList.remove('hidden');
             document.getElementById('touch-controller').classList.remove('hidden');
+
+            presentActiveQuestion(0);
+            updateStarsHUD();
         }
 
         function togglePause() {
@@ -2022,19 +2432,25 @@
             document.getElementById('best-score').innerText = highScore;
             document.getElementById('final-gates').innerText = `${passedGatesCount} / ${TOTAL_QUESTIONS} 題`;
 
-            const finalLivesContainer = document.getElementById('final-lives');
-            if (finalLivesContainer) {
-                let html = '';
-                for (let i = 1; i <= 3; i++) {
-                    if (playerLives >= i) {
-                        html += getHeartSVG('full');
-                    } else if (playerLives >= i - 0.5) {
-                        html += getHeartSVG('half');
+            const finalItemsEl = document.getElementById('final-items');
+            if (finalItemsEl) {
+                finalItemsEl.innerText = `⭐ ${starsCollectedCount} 粒 ｜ ☠️ ${drugsHitCount} 次`;
+            }
+
+            // Populate Animated 5-Star Celebration Ribbon
+            const starRibbon = document.getElementById('result-star-ribbon');
+            if (starRibbon) {
+                let starHtml = '';
+                for (let i = 0; i < TOTAL_QUESTIONS; i++) {
+                    const earned = i < passedGatesCount;
+                    const delayMs = i * 110;
+                    if (earned) {
+                        starHtml += `<span class="text-2xl sm:text-3xl inline-block opacity-0 animate-star-pop drop-shadow" style="animation-delay: ${delayMs}ms;">⭐</span>`;
                     } else {
-                        html += getHeartSVG('empty');
+                        starHtml += `<span class="text-xl sm:text-2xl inline-block opacity-40 grayscale">⭐</span>`;
                     }
                 }
-                finalLivesContainer.innerHTML = html;
+                starRibbon.innerHTML = starHtml;
             }
 
             const resTitle = document.getElementById('result-title');
@@ -2042,29 +2458,28 @@
             const resBadge = document.getElementById('result-badge');
             const resMascot = document.getElementById('result-mascot-img');
 
-            // No voice readout on Result Screen as requested!
             if (isEarlyQuit) {
-                resBadge.innerText = "🏁 完成遊戲";
-                resBadge.className = "inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-black bg-sky-400 text-slate-950 border-2 border-white shadow mb-1";
-                resTitle.innerText = "表現好棒！";
+                resBadge.innerText = "🎈 快樂完成挑戰";
+                resBadge.className = "inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-black bg-sky-300 text-slate-950 border-2 border-white shadow-md mb-1.5";
+                resTitle.innerText = "👏 表現好棒呀！";
                 resSub.innerText = "記住向毒品大聲講「不要 DO NOT！」";
                 resMascot.src = MASCOT_ASSETS.front;
             } else if (passedGatesCount === TOTAL_QUESTIONS) {
-                resBadge.innerText = "🏆 超級禁毒小隊長（滿分！）";
-                resBadge.className = "inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-black bg-amber-400 text-slate-950 border-2 border-white shadow mb-1";
+                resBadge.innerText = "👑 超級無毒小狀元（滿分大獎！）";
+                resBadge.className = "inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 border-2 border-white shadow-md mb-1.5";
                 resTitle.innerText = "🎉 5 關全中！太叻啦！";
-                resSub.innerText = "你全部答啱晒，係最叻嘅禁毒小隊長！";
+                resSub.innerText = "你全部答啱晒，係最叻嘅無毒小狀元！";
                 resMascot.src = MASCOT_ASSETS.yes;
             } else if (passedGatesCount >= 3) {
-                resBadge.innerText = "🌟 正義小超人";
-                resBadge.className = "inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-black bg-emerald-400 text-slate-950 border-2 border-white shadow mb-1";
-                resTitle.innerText = "🎉 成功過關！";
+                resBadge.innerText = "🦸‍♂️ 正義禁毒小超人";
+                resBadge.className = "inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-black bg-emerald-400 text-slate-950 border-2 border-white shadow-md mb-1.5";
+                resTitle.innerText = "🎉 成功闖關！好叻呀！";
                 resSub.innerText = "做得好好！記住大麻朱古力同毒品全部都唔好試！";
                 resMascot.src = MASCOT_ASSETS.front;
             } else {
-                resBadge.innerText = "💪 勇敢小隊員";
-                resBadge.className = "inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-black bg-rose-400 text-white border-2 border-white shadow mb-1";
-                resTitle.innerText = "完成 5 關挑戰！";
+                resBadge.innerText = "🌱 勇敢嘗試小隊員";
+                resBadge.className = "inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-black bg-rose-400 text-white border-2 border-white shadow-md mb-1.5";
+                resTitle.innerText = "💪 完成 5 關大冒險！";
                 resSub.innerText = "下次記住：見到毒品揀右邊「❌ 不要！」，好行為揀左邊「⭕ 要！」";
                 resMascot.src = MASCOT_ASSETS.no;
             }
@@ -2073,9 +2488,13 @@
             document.getElementById('touch-controller').classList.add('hidden');
             document.getElementById('screen-pause').classList.add('hidden');
             document.getElementById('screen-gameover').classList.remove('hidden');
+
+            if (confettiFx) confettiFx.start();
         }
 
         window.onload = function() {
+            confettiFx = new ConfettiCelebration();
+
             document.getElementById('start-logo-img').src = MASCOT_ASSETS.logo;
             document.getElementById('hud-logo-img').src = MASCOT_ASSETS.logo;
             document.getElementById('result-logo-img').src = MASCOT_ASSETS.logo;
@@ -2110,6 +2529,7 @@
             document.getElementById('btn-next-player').addEventListener('click', startGame);
 
             document.getElementById('btn-replay').addEventListener('click', () => {
+                if (confettiFx) confettiFx.stop();
                 soundFx.pauseBGM();
                 document.getElementById('screen-gameover').classList.add('hidden');
                 document.getElementById('hud').classList.add('hidden');
